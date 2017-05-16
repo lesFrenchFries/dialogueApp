@@ -7,7 +7,6 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
         allowedConnections: ['Username-Password-Authentication'],
-        redirectUrl: 'http://localhost:3000/booking',
         responseType: 'token'
       }
     )
@@ -30,8 +29,8 @@ export default class AuthService {
   }
 
   loggedIn() {
-    // Checks if there is a saved token and it's still valid
-    return !!this.getToken()
+
+    return this.getToken() && !isTokenExpired(this.getToken());
   }
 
   setToken(idToken) {
