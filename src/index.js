@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
 import Booking from './components/pages/Booking';
 import Confirmation from './components/pages/Confirmation';
