@@ -12,7 +12,7 @@ class Booking extends React.Component {
   render() {
     return (
       <div>
-        allo Nico!
+        Booking
       </div>
     );
   }
