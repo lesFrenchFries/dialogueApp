@@ -12,8 +12,6 @@ export default class AuthService {
     )
     // Add callback for lock `authenticated` event
     this.lock.on('authenticated', this._doAuthentication.bind(this))
-    // binds login functions to keep this context
-    this.login = this.login.bind(this)
   }
 
   _doAuthentication(authResult) {
@@ -23,27 +21,27 @@ export default class AuthService {
     browserHistory.replace('/booking')
   }
 
-  login() {
+  login = () => {
     // Call the show method to display the widget.
     this.lock.show()
   }
 
-  loggedIn() {
+  loggedIn = () => {
 
     return this.getToken() && !isTokenExpired(this.getToken());
   }
 
-  setToken(idToken) {
+  setToken = (idToken) => {
     // Saves user token to local storage
     localStorage.setItem('id_token', idToken)
   }
 
-  getToken() {
+  getToken = () => {
     // Retrieves the user token from local storage
     return localStorage.getItem('id_token')
   }
 
-  logout() {
+  logout = () => {
     // Clear user token and profile data from local storage
     localStorage.removeItem('id_token');
   }
