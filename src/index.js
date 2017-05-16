@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import App from './components/App';
 import Booking from './components/pages/Booking';
 import Confirmation from './components/pages/Confirmation';
@@ -31,9 +31,8 @@ const requireAuth = (nextState, replace, cb) => {
 const routes = (
 <Router history={browserHistory}>
   <Route path="/" component={App} auth={auth} onEnter={requireAuth}>
-    <Route path="/booking" component={Booking}>
-      <Route path="/booking/:date" component={Availability}/>
-    </Route>
+    <Route path="/booking" component={Booking}/>
+    <Route path="/booking/:date" component={Availability}/>
     <Route path="/confirmation" component={Confirmation}/>
   </Route>
 </Router>
