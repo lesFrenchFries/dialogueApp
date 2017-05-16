@@ -44,7 +44,6 @@ class Menu extends Component {
 
     return (
       <div>
-        <h2>Welcome to Dialogue</h2>
         <div className={`menu ${show?"show":""}`}>
             {loggedIn ?
               <div className="menu__item" onClick={closeMenu}>
