@@ -2,7 +2,7 @@ import data from './data'
 
 class Api {
   requestAvailabilities = () => {
-    promise.resolve(data)
+    return Promise.resolve(data)
   }
 }
 
