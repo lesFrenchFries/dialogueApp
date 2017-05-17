@@ -5,29 +5,6 @@ import './Menu.css'
 
 class Menu extends Component {
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     userInfo: {}
-  //   };
-  // }
-  //
-  // componentWillMount = () => {
-  //     this.getUserInfo();
-  //   }
-  //
-  //
-  // getUserInfo= () => {
-  //   if(auth.isLoggedIn()){
-  //     auth.userInfo()
-  //     .then(res=>{
-  //       this.setState({
-  //         userInfo: res.body
-  //       });
-  //     });
-  //   }
-  // }
-
   _handleLogoutButton= () => {
     this.props.auth.logout();
 

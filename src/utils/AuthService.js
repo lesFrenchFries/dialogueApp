@@ -20,8 +20,6 @@ export default class AuthService {
     // navigate to the home route
     browserHistory.replace('/booking')
 
-
-    console.log(authResult.accessToken)
     this.lock.getUserInfo(authResult.accessToken, function(err, profile){
       if(err) {
         console.log(err);
