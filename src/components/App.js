@@ -17,7 +17,6 @@ class App extends Component {
 
   render() {
     let userInfo = this.props.route.auth.getUserInfo();
-    console.log(userInfo);
     let {isMenuOpen} = this.state;
     let {auth} = this.props.route;
     return (
