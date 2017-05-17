@@ -19,6 +19,23 @@ export default class AuthService {
     this.setToken(authResult.idToken)
     // navigate to the home route
     browserHistory.replace('/booking')
+
+
+    console.log(authResult.accessToken)
+    this.lock.getUserInfo(authResult.accessToken, function(err, profile){
+      if(err) {
+        console.log(err);
+      }
+      else {
+        localStorage.setItem('profile', JSON.stringify(profile));
+      }
+    })
+  }
+
+  getUserInfo = () => {
+    // Retrieves the profile data from local storage
+   const profile = localStorage.getItem('profile')
+   return profile ? JSON.parse(localStorage.profile) : {}
   }
 
   login = () => {

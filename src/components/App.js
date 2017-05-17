@@ -16,16 +16,20 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+    let userInfo = this.props.route.auth.getUserInfo();
     let {isMenuOpen} = this.state;
-    let {auth} = this.props.route
+    let {auth} = this.props.route;
     return (
       <div>
         <div className="App-navbar">
           <h2>Welcome to Dialogue</h2>
-          <i className="fa fa-caret-down"
-            onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}
-          />
+          <div className="App-item">
+            <img className="App-avatar" src={userInfo.picture} alt={userInfo.nickname + ' avatar'}/>
+            <p className="App-user">{userInfo.nickname}</p>
+            <i className="fa fa-caret-down"
+              onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}
+            />
+          </div>
         </div>
         <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu}/>
         {this.props.children}

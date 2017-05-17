@@ -9,7 +9,7 @@ import AuthService from './utils/AuthService';
 
 import './index.css';
 
-const auth = new AuthService('mDjKJ-cjHls9d694dX7VpOqFgM8573KE', 'dialogue-app.auth0.com');
+const auth = new AuthService('IMsuxXJwBxnt2mIpcSjM0mmLT7t1frbu', 'nickoog.auth0.com');
 
 // validate authentication for private routes
 const requireAuth = (nextState, replace, cb) => {

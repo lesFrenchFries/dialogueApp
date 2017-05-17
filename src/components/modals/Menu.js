@@ -30,6 +30,7 @@ class Menu extends Component {
 
   _handleLogoutButton= () => {
     this.props.auth.logout();
+
   }
 
   handleClickOutside = () => {
@@ -37,9 +38,7 @@ class Menu extends Component {
   }
 
   render() {
-    console.log('MENU PROPS', this.props)
     let { closeMenu, show } = this.props;
-    const auth = this.props.auth
     const loggedIn = this.props.auth.loggedIn();
 
     return (
