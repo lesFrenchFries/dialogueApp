@@ -1,8 +1,8 @@
-import { API_HOST } from './config'
+import data from './data'
 
 class Api {
   requestAvailabilities = () => {
-    return API_HOST
+    promise.resolve(data)
   }
 }
 
