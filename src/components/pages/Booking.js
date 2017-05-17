@@ -21,7 +21,7 @@ class Booking extends React.Component {
     api.requestAvailabilities()
     .then(data=>{
       this.setState({
-        weekAvailabilities: data
+        weekAvailabilities: data.map(obj=>obj.date)
         });
     })
   }
@@ -45,8 +45,6 @@ class Booking extends React.Component {
       let from = moment().day("sunday").week(weekNum).format("LL");
       let to = moment().day("saturday").week(weekNum).format("LL");
 
-
-      console.log(this.state)
       return (
         <div className="booking">
           <h2 className="booking-header">Please choose the desired date of your appointment</h2>
@@ -55,7 +53,10 @@ class Booking extends React.Component {
           <p>{from} to {to}</p>
           <div className="week">
             <i className="fa fa-caret-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
-              <DayButton week={weekNum} className="day"/>
+              <DayButton className="day"
+                week={weekNum}
+                dateAv={weekAvailabilities}
+               />
             <i className="fa fa-caret-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
           </div>
 

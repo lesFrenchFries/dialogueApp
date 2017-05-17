@@ -1,5 +1,11 @@
+.day {
+  display: flex;
+  width: 90%;
+  justify-content: space-around;
+  list-style: none;
+}
 
-a {
+.day a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,9 +21,12 @@ a {
   color: #fff;
 }
 
-.day {
+.noAv {
+  background-color: #7b7b7b;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
   display: flex;
-  width: 90%;
-  justify-content: space-around;
-  list-style: none;
+  justify-content: center;
+  align-items: center;
 }
