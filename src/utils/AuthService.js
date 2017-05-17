@@ -1,5 +1,4 @@
 import Auth0Lock from 'auth0-lock'
-import { browserHistory } from 'react-router'
 import { isTokenExpired } from './jwtHelper'
 
 export default class AuthService {
@@ -19,8 +18,6 @@ export default class AuthService {
   _doAuthentication(authResult) {
     // Saves the user token
     this.setToken(authResult.idToken)
-    // navigate to the home route
-    browserHistory.replace('/booking')
   }
 
   login() {

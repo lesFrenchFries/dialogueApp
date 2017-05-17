@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router'
 import api from '../../api';
-// import dayButton from '../elements/dayButton'
+import './booking.css'
 var moment = require('moment');
 
 class Booking extends React.Component {
@@ -28,19 +28,27 @@ class Booking extends React.Component {
     let to=moment(weekDispo[2].date).format("LL");
 
     return (
-      <div>
+      <div className="booking">
         <h2 className="booking-header">Please choose the desired date of your appointment</h2>
-        <h3 className="position"> With a {this.props.location.query.position}</h3>
-        <h4 className="location"> In {this.props.location.query.location}</h4>
+        <h3 className="position"> Professional: {this.props.location.query.position}</h3>
+        <h4 className="location"> Location: {this.props.location.query.location}</h4>
+        <p>{from} to {to}</p>
         <div className="week">
-          <p>{from} to {to}</p>
+          <i className="fa fa-caret-left" aria-hidden="true"></i>
+          <ul className="day">
           {weekDispo.map(a =>
-            <Link to={`/booking/${a.date}`} className="day" key={a.date}>
-              {moment(a.date).format("dddd")}
+            <Link to={`/booking/${a.date}`} >
+              <li key={a.date} className="dayName">
+                {moment(a.date).format("dddd")}
+              </li>
             </Link>
-            )
+
+          )
           }
+          </ul>
+          <i className="fa fa-caret-right" aria-hidden="true"></i>
         </div>
+
 
       </div>
     );
