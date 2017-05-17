@@ -1,24 +1,32 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.App-navbar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #26bdf0;
+  background-image: url(../../public/dialogue-squarelogo.png);
+  background-repeat: no-repeat;
+  background-size: 65px 65px;
   color: white;
+  z-index: 10;
+}
+.App-navbar > h2 {
+  margin-left: 70px
 }
 
-.App-intro {
-  font-size: large;
+.App-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App-avatar {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.App-item p, img{
+  margin: 10px;
 }
