@@ -1,5 +1,5 @@
 import React from 'react';
-var moment = require('moment');
+import api from '../../api';
 
 import './DisplayAvailabilities.css'
 
@@ -11,17 +11,21 @@ class DisplayAvailabilities extends React.Component {
   }
 
   _handleTimeSelect = () => {
+    const token = this.props.auth.getToken()
 
+    api.sendBooking(this.props.params.date, this.props.data.start, token)
+    .then(() => {
+      this.props.router.push('/confirmation')
+    })
   }
 
 
   render() {
     let {data} = this.props
-
     return (
-      <li key={data.start} className="timeSlot" onClick={this._handleTimeSelect}>
-        <p>{moment(data.start).format("HH:mm")}</p><hr/>
-        <p>{moment(data.end).format("HH:mm")}</p>
+
+      <li className="timeSlot" onClick={this._handleTimeSelect}>
+        <p>{data.start} - {data.end}</p>
       </li>
     );
   }

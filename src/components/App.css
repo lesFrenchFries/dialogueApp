@@ -23,12 +23,16 @@
   align-items: center;
 }
 
+.App-item p, img{
+  margin: 10px;
+}
+
+.App-item i {
+  cursor: pointer;
+}
+
 .App-avatar {
   border-radius: 50%;
   height: 50px;
   width: 50px;
-}
-
-.App-item p, img{
-  margin: 10px;
 }

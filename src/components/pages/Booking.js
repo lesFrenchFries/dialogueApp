@@ -18,10 +18,10 @@ class Booking extends React.Component {
   }
 
   _fetchAvailabilities = () => {
-    api.requestAvailabilities()
+    api.reqAvailabilities(this.props.location.query.position, moment().day("sunday").week(this.state.weekNum).format("LL"))
     .then(data=>{
       this.setState({
-        weekAvailabilities: data.map(obj=>obj.date)
+        weekAvailabilities: data
         });
     })
   }
@@ -40,7 +40,6 @@ class Booking extends React.Component {
 
   render() {
     let {weekAvailabilities, weekNum} = this.state;
-
     if(weekAvailabilities.length > 0){
       let from = moment().day("sunday").week(weekNum).format("LL");
       let to = moment().day("saturday").week(weekNum).format("LL");
@@ -55,7 +54,8 @@ class Booking extends React.Component {
             <i className="fa fa-caret-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
               <DayButton className="day"
                 week={weekNum}
-                dateAv={weekAvailabilities}
+                data={weekAvailabilities}
+                specialists={this.props.location.query.position}
                />
             <i className="fa fa-caret-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
           </div>

@@ -3,7 +3,8 @@
   width: 90%;
   justify-content: space-around;
   list-style: none;
-  padding: 0px;
+  padding:0;
+
 }
 
 .day a {
