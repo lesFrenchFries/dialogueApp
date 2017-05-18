@@ -25,11 +25,7 @@ class App extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-    let userInfo = this.props.route.auth.getUserInfo();
-=======
     let {userInfo} = this.state;
->>>>>>> 9ffd890377240d9a388d7e207ab7dbd58b04248a
     let {isMenuOpen} = this.state;
     let {auth} = this.props.route;
     if (Object.keys(userInfo).length > 0){
