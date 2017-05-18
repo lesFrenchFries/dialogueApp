@@ -1,15 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router'
 import api from '../../api';
-import './Booking.css'
+import './Booking.css';
+import DayButton from '../elements/DayButton';
 var moment = require('moment');
 
 class Booking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      weekDispo: [],
-    };
+      weekNum: moment().week(),
+      weekAvailabilities: []
+    }
   }
 
   componentWillMount(){
@@ -20,16 +21,29 @@ class Booking extends React.Component {
     api.requestAvailabilities()
     .then(data=>{
       this.setState({
-        weekDispo: data
+        weekAvailabilities: data.map(obj=>obj.date)
         });
     })
   }
 
+  _handlePrevWeek = () => {
+    this.setState({
+      weekNum: this.state.weekNum - 1
+    })
+  }
+
+  _handleNextWeek = () => {
+    this.setState({
+      weekNum: this.state.weekNum + 1
+    })
+  }
+
   render() {
-    let {weekDispo} = this.state;
-    if(weekDispo.length > 0){
-      let from = moment(weekDispo[0].date, ).format("LL");
-      let to=moment(weekDispo[2].date).format("LL");
+    let {weekAvailabilities, weekNum} = this.state;
+
+    if(weekAvailabilities.length > 0){
+      let from = moment().day("sunday").week(weekNum).format("LL");
+      let to = moment().day("saturday").week(weekNum).format("LL");
 
       return (
         <div className="booking">
@@ -38,19 +52,12 @@ class Booking extends React.Component {
           <h4 className="location"> Location: {this.props.location.query.location}</h4>
           <p>{from} to {to}</p>
           <div className="week">
-            <i className="fa fa-caret-left" aria-hidden="true"></i>
-            <ul className="day">
-            {weekDispo.map(a =>
-              <Link to={`/booking/${a.date}`} key={a.date}>
-                <li className="dayName">
-                  {moment(a.date).format("dddd")}
-                </li>
-              </Link>
-
-            )
-            }
-            </ul>
-            <i className="fa fa-caret-right" aria-hidden="true"></i>
+            <i className="fa fa-caret-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
+              <DayButton className="day"
+                week={weekNum}
+                dateAv={weekAvailabilities}
+               />
+            <i className="fa fa-caret-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
           </div>
 
 
