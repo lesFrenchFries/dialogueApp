@@ -11,19 +11,14 @@ class DayButton extends React.Component {
   }
 
   render() {
-    let {week, dateAv} = this.props;;
+    let {data, specialists} = this.props;;
     let days = [];
-    
-    for(var i=0; i<7; i++){
-      let dayVal = moment().week(week).day(i)
 
-      function validate(e){
-        return moment(e).format("MM-DD-YYYY") === dayVal.format("MM-DD-YYYY")
-      }
-
-      if(dateAv.some(validate)){
+    data.forEach(obj=>{
+      let dayVal = moment(obj.date);
+      if(obj.slots.length >0){
         days.push(
-          <Link to={`/booking/${dayVal.format("MM-DD-YYYY")}`} key={dayVal.format("MM-DD-YYYY")}>
+          <Link to={`/booking/${obj.date}?spec=${specialists}`} key={obj.date}>
             <li className="dayName">
               {dayVal.format("ddd")}<hr/>
               {dayVal.format("DD")}
@@ -32,13 +27,13 @@ class DayButton extends React.Component {
         )
       }else{
         days.push(
-          <li className="dayName noAv" key={dayVal.format("MM-DD-YYYY")}>
+          <li className="dayName noAv" key={obj.date}>
             <span>{dayVal.format("ddd")}<hr/>
             {dayVal.format("DD")}</span>
           </li>
         )
       }
-    }
+    })
 
     return (
       <ul className="day">
