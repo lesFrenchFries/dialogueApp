@@ -32,19 +32,13 @@ class Availability extends React.Component {
   }
 
   render() {
-    console.log(this.state.dayAvailabilities)
     if(this.state.dayAvailabilities.length > 0){
       return (
         <div>
-          <ul className="timeSlotList">
-            {this.state.dayAvailabilities.map(timeSlot => {
-                console.log(timeSlot);
-                <DisplayAvailabilities
-                  data={this.state.dayAvailabilities}
-                />
-              })
-            }
-          </ul>
+
+
+
+          
         </div>
       );
     }else{

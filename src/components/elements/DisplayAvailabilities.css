@@ -1,0 +1,13 @@
+.timeSlot {
+  list-style: none;
+  margin: 15px;
+  text-align: center;
+  border-top:thin solid #0d4a68;
+  border-bottom:thin solid #0d4a68;
+  cursor:pointer;
+}
+
+.timeSlot > p, hr {
+  margin:5px auto;
+  width: 50px;
+}

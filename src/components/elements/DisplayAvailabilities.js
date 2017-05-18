@@ -1,4 +1,7 @@
 import React from 'react';
+var moment = require('moment');
+
+import './DisplayAvailabilities.css'
 
 class DisplayAvailabilities extends React.Component {
   constructor(props) {
@@ -7,12 +10,19 @@ class DisplayAvailabilities extends React.Component {
     };
   }
 
+  _handleTimeSelect = () => {
+
+  }
+
+
   render() {
-    console.log(this.props);
     let {data} = this.props
 
     return (
-      <div></div>
+      <li key={data.start} className="timeSlot" onClick={this._handleTimeSelect}>
+        <p>{moment(data.start).format("HH:mm")}</p><hr/>
+        <p>{moment(data.end).format("HH:mm")}</p>
+      </li>
     );
   }
 
