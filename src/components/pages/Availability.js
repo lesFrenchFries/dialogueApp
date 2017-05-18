@@ -34,19 +34,15 @@ class Availability extends React.Component {
   render() {
     if(this.state.dayAvailabilities.length > 0){
       return (
-        <div>
-
-
-
-          
-        </div>
-      );
+          <div className="availability">
+            <h3 className="availability-titlte">Please choose an availability for the {this.props.params.date}</h3>
+            <ul className="availability-liste"></ul>
+          </div>
+        );
     }else{
       return <div>Loading...</div>
     }
-
   }
-
 }
 
 export default Availability;
