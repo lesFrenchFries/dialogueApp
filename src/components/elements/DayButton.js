@@ -18,7 +18,7 @@ class DayButton extends React.Component {
       let dayVal = moment(obj.date);
       if(obj.slots.length >0){
         days.push(
-          <Link to={`/booking/${obj.date}?spec=${specialists}`} key={obj.date}>
+          <Link to={`/booking/${dayVal.format("YYYY-MM-DD")}?spec=${specialists}`} key={obj.date}>
             <li className="dayName">
               {dayVal.format("ddd")}<hr/>
               {dayVal.format("DD")}

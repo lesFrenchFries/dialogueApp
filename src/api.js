@@ -1,26 +1,30 @@
-import data from './data'
 import {API_HOST} from './config'
 import superagent from 'superagent'
 
 class Api {
-  requestAvailabilities = () => {
-    return Promise.resolve(data)
-  }
 
-  reqAvailabilities = (spec, date) => {
+  reqAvailabilities = (spec, date, patientToken) => {
     return superagent
     .get(`${API_HOST}/availabilities?spec=${spec}&date=${date}`)
+    .set('Authorization', 'Bearer '+ patientToken)
     .then(res => res.body)
   }
 
-  sendBooking = (date, startTime, patientToken) => {
+  sendBooking = (date, startTime, patientToken, spec) => {
     return superagent
     .post(`${API_HOST}/booking`)
-    .set('Authorization', 'token '+ patientToken)
+    .set('Authorization', 'Bearer '+ patientToken)
     .send({
       date: date,
       startTime: startTime,
+      spec:spec
     })
+  }
+
+  reqBookingInfo = (bookingId) => {
+    return superagent
+    .get(`${API_HOST}/booking/${bookingId}`)
+    .then(res => res.body)
   }
 }
 

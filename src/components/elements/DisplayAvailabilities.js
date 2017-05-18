@@ -11,7 +11,7 @@ class DisplayAvailabilities extends React.Component {
   }
 
   _handleTimeSelect = () => {
-    const token = this.props.auth.getToken()
+    const token = this.props.auth.getToken();
 
     api.sendBooking(this.props.params.date, this.props.data.start, token)
     .then(() => {

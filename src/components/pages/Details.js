@@ -1,4 +1,5 @@
 import React from 'react';
+import api from '../../api';
 
 class Details extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Details extends React.Component {
   _fetchBookingInfo = () => {
 
     }
-  
+
 
   render() {
     return (

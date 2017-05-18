@@ -18,7 +18,8 @@ class Booking extends React.Component {
   }
 
   _fetchAvailabilities = () => {
-    api.reqAvailabilities(this.props.location.query.position, moment().day("sunday").week(this.state.weekNum).format("LL"))
+    const token = this.props.route.auth.getToken();
+    api.reqAvailabilities(this.props.location.query.position, moment().day("sunday").week(this.state.weekNum).format("YYYY-MM-DD"), token)
     .then(data=>{
       this.setState({
         weekAvailabilities: data
