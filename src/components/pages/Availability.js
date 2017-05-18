@@ -18,7 +18,9 @@ class Availability extends React.Component {
   }
 
   _fetchAvailabilities = () => {
-    api.reqAvailabilities(this.props.location.query.spec, this.props.params.date)
+    const token = this.props.route.auth.getToken();
+
+    api.reqAvailabilities(this.props.location.query.spec, this.props.params.date, token)
     .then(data =>{
       var date = +moment(this.state.date);
       var avTime = data.find(function(obj){
