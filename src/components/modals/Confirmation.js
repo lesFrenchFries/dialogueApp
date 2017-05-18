@@ -22,12 +22,9 @@ class Confirmation extends React.Component {constructor(props) {
       return (
         <div className="confirmation-form">
           <h3 className="confirmation-title">Confirmation</h3>
-          <p>Your appointment is {this.props.date} at {this.props...} for a {this.props.location.query.position} specialiste</p>
+          <p>Your appointment is /this.props.date at this.props... for a this.props.location.query.position specialiste</p>
           <div className="confirmation-button">
-            <button
-             onClick= this._handleClick
-             onKeyUp= this._handleTyping>
-             Confrim</button>
+            <button onKeyUp={this._handleTyping}>Confrim</button>
           </div>
         </div>
       );
