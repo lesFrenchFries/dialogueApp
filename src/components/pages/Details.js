@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../../api';
+import moment from 'moment';
 
 class Details extends React.Component {
   constructor(props) {
@@ -14,23 +15,25 @@ class Details extends React.Component {
   }
 
   _fetchBookingInfo = () => {
-    api.reqBookingInfo(this.props.params.id)
+    const token = this.props.route.auth.getToken();
+    api.reqBookingInfo(this.props.params.id, token)
     .then(data => {
       this.setState({
-        info: {data},
+        info: data,
       })
     })
     }
 
 
   render() {
+    let {info} = this.state;
     return (
       <div className="confirmation">
-        <h2 className="confirmation-title">Your appointment is confirm for {this.info.time}</h2>
+        <h2 className="confirmation-title">Your appointment is confirm for {moment(info.time).format("dddd, MMMM Do")} at {moment(info.time).format("hh:mm a ")}</h2>
         <p>
-          You will be meeting Dr {this.info.firstName} {this.info.lastName} ({this.info.specialization}) at this address:
+          You will be meeting Dr {info.firstName} {info.lastName} ({info.specialization}) at this address:<br/>
           <span>
-            - {this.info.address}
+            - {info.address}
           </span>
         </p>
       </div>

@@ -11,7 +11,8 @@ class Availability extends React.Component {
     this.state = {
       dayAvailabilities:[],
       date: this.props.params.date,
-      display: false
+      display: false,
+      bookingStart: "",
     }
   }
 
@@ -34,11 +35,16 @@ class Availability extends React.Component {
       })
     })
   }
-  _handleClick = (clicked) => {
+  _handleClick = (clicked,startTime) => {
+    console.log("reach this point", clicked)
     this.setState({
       display: clicked,
+      bookingStart: startTime,
     })
   }
+
+
+
 
   render() {
     let {date}=this.state;
@@ -49,9 +55,10 @@ class Availability extends React.Component {
             {this.state.display ?
                 <Confirmation
                   date={this.state.date}
-                  start={this.props.data.start}
+                  start={this.state.bookingStart}
                   spec={this.props.location.query.spec}
-                  auth={this.props.auth}
+                  auth={this.props.route.auth}
+                  whenConfirm={this._handleConfirm}
                 />  : null}
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot =>
