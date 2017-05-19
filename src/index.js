@@ -30,10 +30,10 @@ const requireAuth = (nextState, replace, cb) => {
 
 const routes = (
 <Router history={browserHistory}>
-  <Route path="/booking" component={App} auth={auth} onEnter={requireAuth}>
-    <IndexRoute component={Booking}/>
-    <Route path="/booking/:date" auth={auth} component={Availability}/>
-    <Route path="/booking/:id" auth={auth} component={Details}/>
+  <Route path="/bookings" component={App} auth={auth} onEnter={requireAuth}>
+    <IndexRoute component={Booking} auth={auth}/>
+    <Route path="/bookings/:date" auth={auth} component={Availability}/>
+    <Route path="/bookings/:id" auth={auth} component={Details}/>
   </Route>
 </Router>
 );
