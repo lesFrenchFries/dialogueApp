@@ -18,7 +18,7 @@ class DayButton extends React.Component {
       if(obj.slots.length >0){
         days.push(
           <Link to={`/bookings/${moment(obj.date).format("YYYY-MM-DD")}?spec=${specialists}`} key={obj.date}>
-            <li className="dayName">
+            <li className="dayName dayName-md">
               {moment(obj.date).format("ddd")}<hr/>
               {moment(obj.date).format("DD")}
             </li>
@@ -26,7 +26,7 @@ class DayButton extends React.Component {
         )
       }else{
         days.push(
-          <li className="dayName noAv" key={obj.date}>
+          <li className="dayName dayName-md noAv noAv-md" key={obj.date}>
             <span>{moment(obj.date).format("ddd")}<hr/>
             {moment(obj.date).format("DD")}</span>
           </li>
@@ -35,7 +35,7 @@ class DayButton extends React.Component {
     })
 
     return (
-      <ul className="day">
+      <ul className="day day-md">
         {days}
       </ul>
     );

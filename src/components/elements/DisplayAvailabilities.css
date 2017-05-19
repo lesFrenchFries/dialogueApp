@@ -9,7 +9,6 @@
   border-bottom:thin solid #0d4a68;
   cursor:pointer;
   height: 55px;
-  background: linear-gradient(to right, #e4f5fc 0%,#9fd8ef 20%,#2ab0ed 50%,#9fd8ef 80%,#e4f5fc 100%);
 }
 
 .timeSlot > p, hr {
