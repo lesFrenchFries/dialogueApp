@@ -34,6 +34,7 @@ const routes = (
     <IndexRoute component={Booking} auth={auth}/>
     <Route path="/bookings/:date" auth={auth} component={Availability}/>
     <Route path="/booking/:id" auth={auth} component={Details}/>
+
   </Route>
 </Router>
 );
