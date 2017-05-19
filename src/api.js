@@ -21,9 +21,10 @@ class Api {
     })
   }
 
-  reqBookingInfo = (bookingId) => {
+  reqBookingInfo = (bookingId, patientToken) => {
     return superagent
     .get(`${API_HOST}/bookings/${bookingId}`)
+    .set('Authorization', 'Bearer '+ patientToken)
     .then(res => res.body)
   }
 }

@@ -15,28 +15,27 @@ class DayButton extends React.Component {
     let days = [];
 
     data.forEach(obj=>{
-      let dayVal = moment(obj.date);
       if(obj.slots.length >0){
         days.push(
-          <Link to={`/booking/${dayVal.format("YYYY-MM-DD")}?spec=${specialists}`} key={obj.date}>
-            <li className="dayName">
-              {dayVal.format("ddd")}<hr/>
-              {dayVal.format("DD")}
+          <Link to={`/bookings/${moment(obj.date).format("YYYY-MM-DD")}?spec=${specialists}`} key={obj.date}>
+            <li className="dayName dayName-md">
+              {moment(obj.date).format("ddd")}<hr/>
+              {moment(obj.date).format("DD")}
             </li>
           </Link>
         )
       }else{
         days.push(
-          <li className="dayName noAv" key={obj.date}>
-            <span>{dayVal.format("ddd")}<hr/>
-            {dayVal.format("DD")}</span>
+          <li className="dayName dayName-md noAv noAv-md" key={obj.date}>
+            <span>{moment(obj.date).format("ddd")}<hr/>
+            {moment(obj.date).format("DD")}</span>
           </li>
         )
       }
     })
 
     return (
-      <ul className="day">
+      <ul className="day day-md">
         {days}
       </ul>
     );

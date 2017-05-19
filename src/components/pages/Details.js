@@ -5,7 +5,7 @@ class Details extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      info:{},
     }
   }
 
@@ -14,13 +14,26 @@ class Details extends React.Component {
   }
 
   _fetchBookingInfo = () => {
-
+    api.reqBookingInfo(this.props.params.id)
+    .then(data => {
+      this.setState({
+        info: {data},
+      })
+    })
     }
 
 
   render() {
     return (
-      <div></div>
+      <div className="confirmation">
+        <h2 className="confirmation-title">Your appointment is confirm for {this.info.time}</h2>
+        <p>
+          You will be meeting Dr {this.info.firstName} {this.info.lastName} ({this.info.specialization}) at this address:
+          <span>
+            - {this.info.address}
+          </span>
+        </p>
+      </div>
     );
   }
 
