@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../../api';
 import DisplayAvailabilities from '../elements/DisplayAvailabilities';
+import Confirmation from '../modals/Confirmation';
 var moment = require('moment');
 
 
@@ -9,7 +10,8 @@ class Availability extends React.Component {
     super(props);
     this.state = {
       dayAvailabilities:[],
-      date: this.props.params.date
+      date: this.props.params.date,
+      display: false
     }
   }
 
@@ -32,19 +34,31 @@ class Availability extends React.Component {
       })
     })
   }
+  _handleClick = (clicked) => {
+    this.setState({
+      display: clicked,
+    })
+  }
 
   render() {
     let {date}=this.state;
-    console.log(this.props);
     if(this.state.dayAvailabilities.length > 0){
       return (
           <div className="availability">
             <h3 className="availability-titlte">Please choose an availability for the {date}</h3>
+            {this.state.display ?
+                <Confirmation
+                  date={this.state.date}
+                  start={this.props.data.start}
+                  spec={this.props.location.query.spec}
+                  auth={this.props.auth}
+                />  : null}
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot =>
-                  <DisplayAvailabilities
+                  <DisplayAvailabilities whenSubmit={this._handleClick}
                     key={timeSlot.start}
                     data={timeSlot}
+                    date={this.state.date}
                     auth={this.props.route.auth}
                   />
                 )
