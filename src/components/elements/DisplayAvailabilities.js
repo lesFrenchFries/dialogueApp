@@ -1,5 +1,4 @@
 import React from 'react';
-import api from '../../api';
 import './DisplayAvailabilities.css'
 
 class DisplayAvailabilities extends React.Component {
@@ -10,13 +9,13 @@ class DisplayAvailabilities extends React.Component {
   }
 
   _handleSubmit = () => {
-    this.props._whenSubmit(true);
+    this.props.whenSubmit(true, this.props.data.start);
   }
 
   render() {
     let {data} = this.props
     return (
-        <li className="timeSlot" OnClick={this._handleSubmit}>
+        <li className="timeSlot" onClick={this._handleSubmit}>
           <p>{data.start} - {data.end}</p>
         </li>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import api from '../../api';
+import moment from 'moment';
 
 class Details extends React.Component {
   constructor(props) {
@@ -14,27 +15,36 @@ class Details extends React.Component {
   }
 
   _fetchBookingInfo = () => {
-    api.reqBookingInfo(this.props.params.id)
+    const token = this.props.route.auth.getToken();
+    api.reqBookingInfo(this.props.params.id, token)
     .then(data => {
       this.setState({
-        info: {data},
+        info: data,
       })
     })
     }
 
 
   render() {
-    return (
-      <div className="confirmation">
-        <h2 className="confirmation-title">Your appointment is confirm for {this.info.time}</h2>
-        <p>
-          You will be meeting Dr {this.info.firstName} {this.info.lastName} ({this.info.specialization}) at this address:
-          <span>
-            - {this.info.address}
-          </span>
-        </p>
-      </div>
-    );
+    let {info} = this.state;
+    console.log(info);
+    if(Object.keys(info).length>0){
+      info.time = info.time.split("T").join(" ").split(":", 2).join(":").split(" ");
+      return (
+        <div className="confirmation">
+          <h3 className="confirmation-title">Your appointment is confirm</h3>
+          <h2>{moment(info.time[0]).format("dddd, MMMM Do")} at {info.time[1]}</h2>
+          <p>
+            You will be meeting Dr {info.firstName} {info.lastName} ({info.specialization}) at this address:<br/>
+            <span>
+              - {info.address}
+            </span>
+          </p>
+        </div>
+      );
+    }else{
+      return (<div>Loading...</div>)
+    }
   }
 
 }
