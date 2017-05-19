@@ -33,7 +33,8 @@ const routes = (
   <Route path="/bookings" component={App} auth={auth} onEnter={requireAuth}>
     <IndexRoute component={Booking} auth={auth}/>
     <Route path="/bookings/:date" auth={auth} component={Availability}/>
-    <Route path="/bookings/:id" auth={auth} component={Details}/>
+    <Route path="/booking/:id" auth={auth} component={Details}/>
+
   </Route>
 </Router>
 );
