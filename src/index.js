@@ -4,7 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import App from './components/App';
 import Booking from './components/pages/Booking';
 import Details from './components/pages/Details';
-import Availability from './components/pages/Availability'
+import Availability from './components/pages/Availability';
 import AuthService from './utils/AuthService';
 
 import './index.css';

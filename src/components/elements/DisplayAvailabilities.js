@@ -1,6 +1,5 @@
 import React from 'react';
 import api from '../../api';
-
 import './DisplayAvailabilities.css'
 
 class DisplayAvailabilities extends React.Component {
@@ -10,23 +9,16 @@ class DisplayAvailabilities extends React.Component {
     };
   }
 
-  _handleTimeSelect = () => {
-    const token = this.props.auth.getToken();
-
-    api.sendBooking(this.props.params.date, this.props.data.start, token)
-    .then(() => {
-      this.props.router.push('/confirmation')
-    })
+  _handleSubmit = () => {
+    this.props._whenSubmit(true);
   }
-
 
   render() {
     let {data} = this.props
     return (
-
-      <li className="timeSlot" onClick={this._handleTimeSelect}>
-        <p>{data.start} - {data.end}</p>
-      </li>
+        <li className="timeSlot" OnClick={this._handleSubmit}>
+          <p>{data.start} - {data.end}</p>
+        </li>
     );
   }
 
