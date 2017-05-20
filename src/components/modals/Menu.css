@@ -4,13 +4,14 @@
   top: 50px;
   right: 0;
   z-index: 0;
-  background-color: #FAFAFA;
+  background-color: white;
+  opacity: 0.5;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
   transform: translateY(-250px);
-  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   visibility: hidden;
   box-shadow: 3px 6px 8px 0 rgba(0, 0, 0, 0.2), 10px 20px 20px 0 rgba(0, 0, 0, 0.19);
 }

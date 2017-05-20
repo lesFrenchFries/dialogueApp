@@ -51,7 +51,7 @@ class Availability extends React.Component {
     if(this.state.dayAvailabilities.length > 0){
       return (
           <div className="availability">
-            <h3 className="availability-titlte">Please choose an availability for {moment(date).format("dddd MMMM Do")}</h3>
+            <h3 className="availability-title">Please choose an availability <br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
             {this.state.display ?
                 <Confirmation
                   date={this.state.date}

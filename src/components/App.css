@@ -5,7 +5,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   background-color: #26bdf0;
   background-image: url(../../public/dialogue-squarelogo.png);
   background-repeat: no-repeat;
@@ -13,13 +13,10 @@
   color: white;
   z-index: 10;
 }
-.App-navbar > h2 {
-  margin-left: 70px
-}
 
 .App-item {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
 }
 

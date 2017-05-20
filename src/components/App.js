@@ -32,7 +32,6 @@ class App extends Component {
       return (
         <div>
           <div className="App-navbar">
-            <h2>Welcome to Dialogue</h2>
             <div className="App-item">
               <img className="App-avatar" src={userInfo.picture} alt={userInfo.nickname + ' avatar'}/>
               <p className="App-user">{userInfo.nickname}</p>
