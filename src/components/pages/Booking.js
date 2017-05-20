@@ -47,18 +47,20 @@ class Booking extends React.Component {
 
       return (
         <div className="booking">
-          <h2 className="booking-header">Please choose the desired date of your appointment</h2>
-          <h3 className="position"> Professional: {this.props.location.query.position}</h3>
-          <h4 className="location"> Location: {this.props.location.query.location}</h4>
-          <p>{from} to {to}</p>
+          <h2 className="position"> Professional: {this.props.location.query.position}</h2>
+          <h3 className="location"> Location: {this.props.location.query.location}</h3>
+          <div className="booking-header">
+            <h4>Please choose the desired date of your appointment</h4>
+            <p>{from} to {to}</p>
+          </div>
           <div className="week">
-            <i className="fa fa-caret-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
+            <i className="fa fa-chevron-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
               <DayButton className="day"
                 week={weekNum}
                 data={weekAvailabilities}
                 specialists={this.props.location.query.position}
                />
-            <i className="fa fa-caret-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
+            <i className="fa fa-chevron-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
           </div>
 
 

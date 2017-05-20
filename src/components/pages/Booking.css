@@ -1,12 +1,15 @@
 .booking {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 20px;
 }
-
-.booking > p {
-  text-align: left;
+.position {
+  margin: 0;
+  padding: 10px 10px 5px 10px;
 }
-
+.location {
+  margin: 0;
+  padding: 5px 10px 10px 10px;
+}
 .week {
   margin-top:20px;
   display:flex;
@@ -17,4 +20,17 @@
   width: 5%;
   font-size: 35px;
   cursor: pointer;
+}
+
+.booking-header {
+  border-top: 1px solid #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+  text-align: left;
+  padding-left: 10px;
+
+}
+
+.booking-header > h4, p{
+  margin: 0px;
+  padding: 10px;
 }
