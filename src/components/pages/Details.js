@@ -35,10 +35,7 @@ class Details extends React.Component {
           <h3 className="confirmation-title">Your appointment is confirm</h3>
           <h2>{moment(info.time[0]).format("dddd, MMMM Do")} at {info.time[1]}</h2>
           <p>
-            You will be meeting Dr {info.firstName} {info.lastName} ({info.specialization}) at this address:<br/>
-            <span>
-              - {info.address}
-            </span>
+            You will be meeting {info.firstName} {info.lastName} ({info.specialization})
           </p>
         </div>
       );

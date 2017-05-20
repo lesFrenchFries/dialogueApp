@@ -31,7 +31,7 @@ class Booking extends React.Component {
     .then(data=>{
       this.setState({
         weekAvailabilities: data,
-        loading: false,
+        loading: false
       });
     })
   }
@@ -62,7 +62,7 @@ class Booking extends React.Component {
         <h4 className="location"> Location: {this.props.location.query.location}</h4>
         <p>{from} to {to}</p>
         <div className="week">
-          <i className="fa fa-caret-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
+          <i className="fa fa-chevron-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
           {(this.state.loading || !weekAvailabilities.length)
             ? <div className="loading">Loading...</div>
             : <DayButton className="day"
@@ -71,7 +71,7 @@ class Booking extends React.Component {
                 specialists={this.props.location.query.position}
                />
           }
-          <i className="fa fa-caret-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
+          <i className="fa fa-chevron-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
         </div>
       </div>
     );
