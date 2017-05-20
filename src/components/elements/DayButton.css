@@ -2,8 +2,17 @@
   width: 90%;
   list-style: none;
   padding:0;
-
 }
+
+.loading {
+  width: 90%;
+  height: 112px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .day a {
   height: 80px;
@@ -39,8 +48,10 @@
     display: flex;
     width: 90%;
     justify-content: space-around;
+    align-items: center;
     list-style: none;
     padding:0;
+    height: 112px
   }
 
   .day-md a {

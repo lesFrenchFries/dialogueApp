@@ -11,7 +11,7 @@ class DayButton extends React.Component {
   }
 
   render() {
-    let {data, specialists} = this.props;;
+    let { data, specialists} = this.props;
     let days = [];
 
     data.forEach(obj=>{
