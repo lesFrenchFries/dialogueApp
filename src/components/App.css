@@ -12,6 +12,7 @@
   background-size: 65px 65px;
   color: white;
   z-index: 10;
+  box-shadow: 0px 3px 5px -3px grey;
 }
 
 .App-item {

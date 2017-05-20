@@ -1,6 +1,6 @@
 .timeSlotList{
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 20px 10px 15px 10px;
+  margin: 0;
 }
 
 .timeSlot {
@@ -18,18 +18,19 @@
 
 .timeSlot:hover {
   background-color: #d3eeff;
-  box-shadow:  0px 3px 10px -3px grey;
+  box-shadow:  0px 3px 5px -3px grey;
   border: 1px solid #d3eeff;
 }
 
 .timeSlot > p, hr {
   margin:5px auto;
+  color: #0d4a68;
 }
 
 .availability-title {
   font-size: 20px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  margin: 0;
+  padding: 20px 10px 15px 10px;
   border-bottom: 1px solid #d3eeff;
 }
 .availability-title > spam {
