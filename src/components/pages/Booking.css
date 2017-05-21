@@ -17,6 +17,7 @@
 }
 
 .week > i {
+  position: relative;
   width: 5%;
   font-size: 35px;
   cursor: pointer;
