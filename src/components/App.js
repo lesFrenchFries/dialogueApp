@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   closeMenu = () => {
-    this.setState({ isMenuOpen: false })
+    this.setState({ isMenuOpen: false })      
   }
 
   _getUserInfo = () => {

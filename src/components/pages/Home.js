@@ -26,6 +26,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log(this.state.patientBooking)
     return (
       <div>Home</div>
     );
