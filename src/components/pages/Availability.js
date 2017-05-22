@@ -71,8 +71,6 @@ class Availability extends React.Component {
   render() {
     let {date}=this.state;
     if(this.state.dayAvailabilities.length > 0){
-      console.log(this.props)
-      console.log(this.state)
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>

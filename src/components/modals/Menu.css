@@ -1,10 +1,10 @@
 .menu {
-  width: 100%;
+  width: 150px;
   position: fixed;
   top: 50px;
   right: 0;
   z-index: 0;
-  background-color: #fafafa;
+  background-color: #d3eeff;
   opacity: 0.5;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -12,7 +12,7 @@
   transition: 0.5s;
   transform: translateY(-250px);
   visibility: hidden;
-  box-shadow: 0px 3px 5px -3px grey; /*rgba(0, 0, 0, 0.2), 10px 20px 20px 0 rgba(0, 0, 0, 0.19);*/
+  box-shadow: 0px 3px 5px -3px grey;
 }
 
 .menu.show {
@@ -22,21 +22,17 @@
   visibility: visible;
 }
 
-.fa {
-  margin: 20px;
-  font-size: 30px;
-}
 .menu__item {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  height: 50px;
+  height: 200px;
   /*padding-top: 42px;*/
-  padding: 0 40px;
-  padding-top: 20px;
+  padding: 30px 40px;
   text-align: right;
 }
-.menu__item button, a {
+.menu__item button, .menu__item a{
   border: none;
   padding: 0;
   font-weight: bold;
@@ -45,10 +41,10 @@
   background-color: transparent;
   cursor: pointer;
   text-decoration: none;
+  font-size: 17px;
 }
 
-.menu__item button:hover, a:hover {
-  text-decoration: underline;
+.menu__item button:hover, .menu__item a:hover {
   color: #0d4a68;
 
 }
