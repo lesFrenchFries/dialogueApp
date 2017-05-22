@@ -14,6 +14,15 @@ html {
   padding:0;
 }
 
+.loading {
+  width: 90%;
+  height: 112px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .day-md a{
   margin-top: 5px;
   margin-bottom: 5px;
@@ -52,8 +61,10 @@ html {
     width: 90%;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     list-style: none;
     padding:0;
+    height: 112px
   }
 
   .day-md a {

@@ -28,6 +28,13 @@ class Api {
     .set('Authorization', 'Bearer '+ patientToken)
     .then(res => res.body)
   }
+
+  reqPatientBooking = (patientToken) => {
+    return superagent
+    .get(`${API_HOST}/mybookings`)
+    .set('Authorization', 'Bearer '+ patientToken)
+    .then(res => res.body)
+  }
 }
 
 export default new Api();

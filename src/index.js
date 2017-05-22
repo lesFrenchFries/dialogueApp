@@ -6,6 +6,7 @@ import Booking from './components/pages/Booking';
 import Details from './components/pages/Details';
 import Availability from './components/pages/Availability';
 import AuthService from './utils/AuthService';
+import Home from './components/pages/Home';
 
 import './index.css';
 
@@ -34,6 +35,7 @@ const routes = (
     <IndexRoute component={Booking} auth={auth}/>
     <Route path="/bookings/:date" auth={auth} component={Availability}/>
     <Route path="/booking/:id" auth={auth} component={Details}/>
+    <Route path="/home" auth={auth} component={Home}/>
 
   </Route>
 </Router>
