@@ -36,6 +36,7 @@ const routes = (
     <Route path="/bookings/:date" auth={auth} component={Availability}/>
     <Route path="/booking/:id" auth={auth} component={Details}/>
     <Route path="/home" auth={auth} component={Home}/>
+
   </Route>
 </Router>
 );

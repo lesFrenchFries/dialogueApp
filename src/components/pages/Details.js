@@ -28,6 +28,7 @@ class Details extends React.Component {
 
   render() {
     let {info} = this.state;
+
     if(Object.keys(info).length>0){
       info.time = info.time.split("T").join(" ").split(":", 2).join(":").split(" ");
       return (
@@ -36,6 +37,7 @@ class Details extends React.Component {
           <h2>{moment(info.time[0]).format("dddd, MMMM Do")} at {info.time[1]}</h2>
           <p>
             You will be meeting {info.firstName} {info.lastName} ({info.specialization})
+
           </p>
         </div>
       );

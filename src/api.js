@@ -10,14 +10,15 @@ class Api {
     .then(res => res.body)
   }
 
-  sendBooking = (date, startTime, patientToken, spec) => {
+  sendBooking = (date, startTime, patientToken, spec, mail) => {
     return superagent
     .post(`${API_HOST}/bookings`)
     .set('Authorization', 'Bearer '+ patientToken)
     .send({
       date: date,
       startTime: startTime,
-      spec:spec
+      spec: spec,
+      mail: mail
     })
   }
 

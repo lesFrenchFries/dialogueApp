@@ -53,29 +53,30 @@ class Booking extends React.Component {
     let from = moment().day("sunday").week(weekNum).format("LL");
     let to = moment().day("saturday").week(weekNum).format("LL");
 
-    return (
-      <div className="booking">
-        <h2 className="booking-header">Please choose the desired date of your appointment</h2>
-        <h3 className="position"> Professional: {this.props.location.query.position}</h3>
-        <h4 className="location"> Location: {this.props.location.query.location}</h4>
-        <p>{from} to {to}</p>
-        <div className="week">
-          <i className="fa fa-chevron-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
-          {(this.state.loading || !weekAvailabilities.length)
+
+      return (
+        <div className="booking">
+          <h2 className="position"> Professional: {this.props.location.query.position}</h2>
+          <h3 className="location"> Location: {this.props.location.query.location}</h3>
+          <div className="booking-header">
+            <h4>Please choose the desired date of your appointment</h4>
+            <p>{from} to {to}</p>
+          </div>
+          <div className="week">
+            {(this.state.loading || !weekAvailabilities.length)
             ? <div className="loading">
                 <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
                 <span className="sr-only">Loading...</span>
               </div>
-            : <DayButton className="day"
+              <DayButton className="day"
+
                 week={weekNum}
                 data={weekAvailabilities}
                 specialists={this.props.location.query.position}
                />
-          }
-          <i className="fa fa-chevron-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
+            <i className="fa fa-chevron-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
+          </div>
         </div>
-
-      </div>
     );
   }
 
