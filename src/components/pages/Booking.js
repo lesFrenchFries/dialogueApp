@@ -52,8 +52,6 @@ class Booking extends React.Component {
     let {weekAvailabilities, weekNum} = this.state;
     let from = moment().day("sunday").week(weekNum).format("LL");
     let to = moment().day("saturday").week(weekNum).format("LL");
-    console.log("week",from, to)
-    console.log("availabilities", this.state.weekAvailabilities)
 
     return (
       <div className="booking">
@@ -73,6 +71,7 @@ class Booking extends React.Component {
           }
           <i className="fa fa-chevron-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
         </div>
+
       </div>
     );
   }

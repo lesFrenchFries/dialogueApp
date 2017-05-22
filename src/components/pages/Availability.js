@@ -20,6 +20,12 @@ class Availability extends React.Component {
     this._fetchAvailabilities();
   }
 
+  componentDidUpdate(prevState){
+    if(prevState.display !== this.state.display) {
+      this._scrollOrNot()
+    }
+  }
+
   _fetchAvailabilities = () => {
     const token = this.props.route.auth.getToken();
 
@@ -36,14 +42,26 @@ class Availability extends React.Component {
     })
   }
   _handleClick = (clicked,startTime) => {
-    console.log("reach this point", clicked)
     this.setState({
       display: clicked,
       bookingStart: startTime,
     })
   }
 
+  _handleCancel = (cancel) => {
+    this.setState({
+      display: cancel,
+    })
+  }
 
+  _scrollOrNot = () => {
+    let body = document.getElementsByTagName("body")[0];
+    if(this.state.display){
+      body.classList.add("scrollOrNo")
+    }else{
+      body.classList.remove("scrollOrNo")
+    }
+  }
 
 
   render() {
@@ -53,13 +71,15 @@ class Availability extends React.Component {
           <div className="availability">
             <h3 className="availability-titlte">Please choose an availability for {moment(date).format("dddd MMMM Do")}</h3>
             {this.state.display ?
+              <div className="popUpForm">
                 <Confirmation
                   date={this.state.date}
                   start={this.state.bookingStart}
                   spec={this.props.location.query.spec}
                   auth={this.props.route.auth}
-                  whenConfirm={this._handleConfirm}
-                />  : null}
+                  whenCancel={this._handleCancel}
+                />
+              </div> : null}
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot =>
                   <DisplayAvailabilities whenSubmit={this._handleClick}

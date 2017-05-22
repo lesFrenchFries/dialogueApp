@@ -36,9 +36,14 @@ class App extends Component {
             <div className="App-item">
               <img className="App-avatar" src={userInfo.picture} alt={userInfo.nickname + ' avatar'}/>
               <p className="App-user">{userInfo.nickname}</p>
-              <i className="fa fa-caret-down"
-                onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}
-              />
+              {isMenuOpen
+                ? <i className="fa fa-caret-up" aria-hidden="true"
+                  onClick={this.closeMenu}
+                  />
+
+                : <i className="fa fa-caret-down"
+                  onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}
+                  />}
             </div>
           </div>
           <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu}/>
