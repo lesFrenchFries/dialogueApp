@@ -96,7 +96,7 @@ class Availability extends React.Component {
     }else{
       return (
         <div>
-          <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+          <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
           <span className="sr-only">Loading...</span>
         </div>
       )

@@ -48,3 +48,8 @@
   top: 0;
   background-color: rgba(0,0,0, 0.20);
 }
+
+.blue {
+  color: #26BDF0;
+  font-size: 45px !important;
+}
