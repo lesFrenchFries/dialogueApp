@@ -41,7 +41,12 @@ class Details extends React.Component {
         </div>
       );
     }else{
-      return (<div>Loading...</div>)
+      return (
+        <div className="loadingSpinner">
+          <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
+          <span className="sr-only">Loading...</span>
+        </div>
+      )
     }
   }
 
