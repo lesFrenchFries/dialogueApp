@@ -14,6 +14,7 @@ class Availability extends React.Component {
       date: this.props.params.date,
       display: false,
       bookingStart: "",
+      wasAmBefore: false,
     }
   }
 
@@ -70,6 +71,8 @@ class Availability extends React.Component {
   render() {
     let {date}=this.state;
     if(this.state.dayAvailabilities.length > 0){
+      console.log(this.props)
+      console.log(this.state)
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
@@ -85,13 +88,36 @@ class Availability extends React.Component {
               </div> : null}
 
             <ul className="timeSlotList">
-              {this.state.dayAvailabilities.map(timeSlot =>
+              {this.state.dayAvailabilities.map(timeSlot => {
+                if(timeSlot.start > "12:00" && this.state.wasAmBefore){
+                  return(
+                  <div>
+                    <div className="separator">
+                      <hr />
+                      <p>Noon</p>
+                      <hr />
+                    </div>
+                    <DisplayAvailabilities whenSubmit={this._handleClick}
+                      key={timeSlot.start}
+                      data={timeSlot}
+                      date={this.state.date}
+                      auth={this.props.route.auth}
+                    />
+                  </div>
+                  )};
+                  if(timeSlot.start < "12:00") {
+                    this.state.wasAmBefore= true;
+                  } else {
+                    this.state.wasAmBefore= false;
+                  }
+                  return (
                   <DisplayAvailabilities whenSubmit={this._handleClick}
                     key={timeSlot.start}
                     data={timeSlot}
                     date={this.state.date}
                     auth={this.props.route.auth}
-                  />
+                  />)
+                  }
                 )
               }
             </ul>
