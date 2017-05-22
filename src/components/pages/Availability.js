@@ -94,7 +94,12 @@ class Availability extends React.Component {
           </div>
         );
     }else{
-      return <div>Loading...</div>
+      return (
+        <div>
+          <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+          <span className="sr-only">Loading...</span>
+        </div>
+      )
     }
   }
 }
