@@ -28,6 +28,7 @@ class Details extends React.Component {
 
   render() {
     let {info} = this.state;
+
     if(Object.keys(info).length>0){
       info.time = info.time.split("T").join(" ").split(":", 2).join(":").split(" ");
       return (

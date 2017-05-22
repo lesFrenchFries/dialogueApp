@@ -42,6 +42,7 @@ class Availability extends React.Component {
     })
   }
   _handleClick = (clicked,startTime) => {
+
     this.setState({
       display: clicked,
       bookingStart: startTime,
@@ -63,13 +64,12 @@ class Availability extends React.Component {
     }
   }
 
-
   render() {
     let {date}=this.state;
     if(this.state.dayAvailabilities.length > 0){
       return (
           <div className="availability">
-            <h3 className="availability-titlte">Please choose an availability for {moment(date).format("dddd MMMM Do")}</h3>
+            <h3 className="availability-title">Please choose an availability <br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
             {this.state.display ?
               <div className="popUpForm">
                 <Confirmation
@@ -80,6 +80,7 @@ class Availability extends React.Component {
                   whenCancel={this._handleCancel}
                 />
               </div> : null}
+
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot =>
                   <DisplayAvailabilities whenSubmit={this._handleClick}
