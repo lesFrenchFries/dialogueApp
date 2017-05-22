@@ -13,10 +13,6 @@ class Confirmation extends React.Component {
 
   _handleConfirmation = () => {
     const token = this.props.auth.getToken();
-<<<<<<< HEAD
-=======
-
->>>>>>> 5f4746c9cfb6b47a4c3e42570113bfb56bb222b5
     const mail = this.props.auth.getUserInfo();
     api.sendBooking(this.props.date, this.props.start, token, this.props.spec, mail.email)
     .then(res => {

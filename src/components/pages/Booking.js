@@ -69,12 +69,11 @@ class Booking extends React.Component {
                 <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
                 <span className="sr-only">Loading...</span>
               </div>
-              <DayButton className="day"
-
+              :<DayButton className="day"
                 week={weekNum}
                 data={weekAvailabilities}
                 specialists={this.props.location.query.position}
-               />
+               />}
             <i className="fa fa-chevron-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
           </div>
         </div>

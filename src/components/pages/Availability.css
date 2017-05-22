@@ -1,0 +1,21 @@
+.availability-title {
+  font-size: 20px;
+  margin: 0;
+  padding: 20px 10px 15px 15px;
+  border-bottom: 1px solid #dfdfdf;
+}
+.availability-title > spam {
+  font-size: 15px;
+}
+
+@media only screen and (min-width: 641px) {
+  .availability-title {
+    font-size: 30px;
+    margin: 0;
+    padding: 20px 10px 15px 40px;
+    border-bottom: 1px solid #dfdfdf;
+  }
+  .availability-title > spam {
+    font-size: 20px;
+  }
+}
