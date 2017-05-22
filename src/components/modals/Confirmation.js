@@ -11,10 +11,9 @@ class Confirmation extends React.Component {
 
   _handleConfirmation = () => {
     const token = this.props.auth.getToken();
-    console.log(token, this.props.date, this.props.start, this.props.spec);
-    api.sendBooking(this.props.date, this.props.start, token, this.props.spec)
+    const mail = this.props.auth.getUserInfo();
+    api.sendBooking(this.props.date, this.props.start, token, this.props.spec, mail.email)
     .then(res => {
-      console.log(res);
       browserHistory.push(`/booking/${res.body.id}`)
     })
   }
