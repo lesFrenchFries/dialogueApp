@@ -13,7 +13,7 @@ class SwitchDateMenu extends React.Component {
     var changeDate = event.target.value
     console.log(changeDate);
     console.log(this.props);
-    browserHistory.push(`/booking/${changeDate}`)
+    browserHistory.push(`/bookings/${changeDate}`)
   }
 
   render() {

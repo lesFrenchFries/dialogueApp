@@ -14,6 +14,7 @@ class Availability extends React.Component {
       date: this.props.params.date,
       display: false,
       bookingStart: "",
+      loading: true,
     }
   }
 
@@ -28,19 +29,23 @@ class Availability extends React.Component {
   }
 
   _fetchAvailabilities = () => {
-    const token = this.props.route.auth.getToken();
+    if(this.props.route.auth.loggedIn()){
+      const token = this.props.route.auth.getToken();
 
-    api.reqAvailabilities(this.props.location.query.spec, this.props.params.date, token)
-    .then(data =>{
-      var date = +moment(this.state.date);
-      var avTime = data.find(function(obj){
-        return date === +moment(obj.date)
-      })
+      api.reqAvailabilities(this.props.location.query.spec, this.props.params.date, token)
+      .then(data =>{
+        console.log(data);
+        var date = +moment(this.state.date);
+        var avTime = data.find(function(obj){
+          return date === +moment(obj.date, 'ddd MMM DD YYYY')
+        })
 
-      this.setState({
-        dayAvailabilities:avTime.slots,
+        this.setState({
+          dayAvailabilities:avTime.slots,
+          loading: false
+        })
       })
-    })
+    }
   }
   _handleClick = (clicked,startTime) => {
 
@@ -95,13 +100,16 @@ class Availability extends React.Component {
             </ul>
           </div>
         );
-    }else{
+    }else if (this.state.loading){
       return (
         <div className="loadingSpinner">
           <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
           <span className="sr-only">Loading...</span>
         </div>
       )
+    }else{
+      this.props.router.push('/home')
+      return <div></div>
     }
   }
 }

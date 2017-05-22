@@ -1,5 +1,5 @@
 import React from 'react';
-import './DisplayAvailabilities.css'
+import './DisplayAvailabilities.css';
 
 class DisplayAvailabilities extends React.Component {
   constructor(props) {
@@ -13,14 +13,13 @@ class DisplayAvailabilities extends React.Component {
   }
 
   render() {
-    let {data} = this.props
-    return (
-        <li className="timeSlot" onClick={this._handleSubmit}>
-          <p>{data.start} - {data.end}</p>
-        </li>
-    );
+    let {data} = this.props;
+      return (
+          <li className="timeSlot" onClick={this._handleSubmit}>
+            <p>{data.start} - {data.end}</p>
+          </li>
+      );
   }
-
 }
 
 export default DisplayAvailabilities;

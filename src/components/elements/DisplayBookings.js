@@ -12,7 +12,6 @@ class DisplayBookings extends React.Component {
   render() {
     let {info} = this.props
     info.time = info.time.split("T").join(" ").split(":", 2).join(":").split(" ");
-    console.log(moment().isAfter(info.time[0]));
     if(moment().isBefore(info.time[0])){
       return (
         <div className="my_bookings">
