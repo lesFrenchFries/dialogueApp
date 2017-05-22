@@ -4,7 +4,7 @@
   top: 50px;
   right: 0;
   z-index: 0;
-  background-color: #d3eeff;
+  background-color: white;
   opacity: 0.5;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
@@ -12,7 +12,7 @@
   transition: 0.5s;
   transform: translateY(-250px);
   visibility: hidden;
-  box-shadow: 0px 3px 5px -3px grey;
+  box-shadow: 0px 1px 5px 0px grey;
 }
 
 .menu.show {

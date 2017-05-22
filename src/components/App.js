@@ -32,7 +32,7 @@ class App extends Component {
       return (
         <div>
           <div className="App-navbar">
-            <img className="App-logo" src="logo-white.png" alt="logo dialogue"/>
+            <img className="App-logo" src="/logo-white.png" alt="logo dialogue"/>
             <img className="App-avatar" src={userInfo.picture} alt={userInfo.nickname + ' avatar'}
             onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}/>
           </div>

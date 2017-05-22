@@ -71,6 +71,9 @@ class Availability extends React.Component {
   render() {
     let {date}=this.state;
     if(this.state.dayAvailabilities.length > 0){
+      
+
+
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
@@ -87,7 +90,17 @@ class Availability extends React.Component {
 
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot => {
-                if(timeSlot.start > "12:00" && this.state.wasAmBefore){
+                var tempBool = false;
+                if(timeSlot.start >= "12:00" && this.state.wasAmBefore){
+                  tempBool = true;
+                };
+                if(timeSlot.start < "12:00") {
+                  this.state.wasAmBefore= true;
+                }
+                else {
+                  this.state.wasAmBefore= false;
+                };
+                if (tempBool) {
                   return(
                   <div>
                     <div className="separator">
@@ -101,13 +114,9 @@ class Availability extends React.Component {
                       date={this.state.date}
                       auth={this.props.route.auth}
                     />
-                  </div>
-                  )};
-                  if(timeSlot.start < "12:00") {
-                    this.state.wasAmBefore= true;
-                  } else {
-                    this.state.wasAmBefore= false;
-                  }
+                  </div>)
+                }
+                else {
                   return (
                   <DisplayAvailabilities whenSubmit={this._handleClick}
                     key={timeSlot.start}
@@ -115,8 +124,8 @@ class Availability extends React.Component {
                     date={this.state.date}
                     auth={this.props.route.auth}
                   />)
-                  }
-                )
+                }
+              })
               }
             </ul>
           </div>
