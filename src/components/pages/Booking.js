@@ -9,7 +9,8 @@ class Booking extends React.Component {
     super(props);
     this.state = {
       weekNum: moment().week(),
-      weekAvailabilities: []
+      weekAvailabilities: [],
+      loading: true
     }
   }
 
@@ -17,13 +18,21 @@ class Booking extends React.Component {
     this._fetchAvailabilities();
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.weekNum !== this.state.weekNum){
+      this._fetchAvailabilities();
+      this.setState({loading: true})
+    }
+  }
+
   _fetchAvailabilities = () => {
     const token = this.props.route.auth.getToken();
     api.reqAvailabilities(this.props.location.query.position, moment().day("sunday").week(this.state.weekNum).format("YYYY-MM-DD"), token)
     .then(data=>{
       this.setState({
-        weekAvailabilities: data
-        });
+        weekAvailabilities: data,
+        loading: false
+      });
     })
   }
 
@@ -41,9 +50,9 @@ class Booking extends React.Component {
 
   render() {
     let {weekAvailabilities, weekNum} = this.state;
-    if(weekAvailabilities.length > 0){
-      let from = moment().day("sunday").week(weekNum).format("LL");
-      let to = moment().day("saturday").week(weekNum).format("LL");
+    let from = moment().day("sunday").week(weekNum).format("LL");
+    let to = moment().day("saturday").week(weekNum).format("LL");
+
 
       return (
         <div className="booking">
@@ -55,20 +64,22 @@ class Booking extends React.Component {
           </div>
           <div className="week">
             <i className="fa fa-chevron-left" aria-hidden="true" onClick={this._handlePrevWeek}></i>
+            {(this.state.loading || !weekAvailabilities.length)
+            ? <div className="loading">
+                <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
+                <span className="sr-only">Loading...</span>
+              </div>
               <DayButton className="day"
+
                 week={weekNum}
                 data={weekAvailabilities}
                 specialists={this.props.location.query.position}
                />
             <i className="fa fa-chevron-right" aria-hidden="true" onClick={this._handleNextWeek}></i>
           </div>
-
-
         </div>
-      );
-    }else{return <div>Loading...</div>}
-
-    }
+    );
+  }
 
 }
 

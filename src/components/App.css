@@ -34,3 +34,20 @@
   height: 50px;
   width: 50px;
 }
+
+.popUpForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(0,0,0, 0.20);
+}
+
+.blue {
+  color: #26BDF0;
+  font-size: 45px !important;
+}

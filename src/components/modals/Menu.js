@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
 import onClickOutside from 'react-onclickoutside';
 import './Menu.css'
 
@@ -23,6 +24,7 @@ class Menu extends Component {
         <div className={`menu ${show?"show":""}`}>
             {loggedIn ?
               <div className="menu__item" onClick={closeMenu}>
+                <Link to="/home">Home</Link>
                 <button type="button" onClick={this._handleLogoutButton}>Logout</button>
               </div>
             :null}

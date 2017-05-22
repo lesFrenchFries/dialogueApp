@@ -27,17 +27,28 @@
   font-size: 30px;
 }
 .menu__item {
-    height: 50px;
-    padding-top: 42px;
-    padding-right: 40px;
-    text-align: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  /*padding-top: 42px;*/
+  padding: 0 40px;
+  padding-top: 20px;
+  text-align: right;
 }
-.menu__item button {
+.menu__item button, a {
   border: none;
   padding: 0;
   font-weight: bold;
   font-size: 20px;
-  color: #0d4a68;
+  color: rgba(13, 74, 104, 0.8);
   background-color: transparent;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.menu__item button:hover, a:hover {
+  text-decoration: underline;
+  color: #0d4a68;
+
 }
