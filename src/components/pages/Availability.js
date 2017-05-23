@@ -2,9 +2,14 @@ import React from 'react';
 import api from '../../api';
 import DisplayAvailabilities from '../elements/DisplayAvailabilities';
 import Confirmation from '../modals/Confirmation';
+<<<<<<< HEAD
 import './Availability.css';
 var moment = require('moment');
+=======
+import './Availability.css'
+>>>>>>> 28fbd6a3fb6ec1a6529e22e1d8254a59321d747f
 
+var moment = require('moment');
 
 class Availability extends React.Component {
   constructor(props) {
@@ -15,6 +20,7 @@ class Availability extends React.Component {
       display: false,
       bookingStart: "",
       wasAmBefore: false,
+      loading: true,
     }
   }
 
@@ -29,19 +35,23 @@ class Availability extends React.Component {
   }
 
   _fetchAvailabilities = () => {
-    const token = this.props.route.auth.getToken();
+    if(this.props.route.auth.loggedIn()){
+      const token = this.props.route.auth.getToken();
 
-    api.reqAvailabilities(this.props.location.query.spec, this.props.params.date, token)
-    .then(data =>{
-      var date = +moment(this.state.date);
-      var avTime = data.find(function(obj){
-        return date === +moment(obj.date)
-      })
+      api.reqAvailabilities(this.props.location.query.spec, this.props.params.date, token)
+      .then(data =>{
+        console.log(data);
+        var date = +moment(this.state.date);
+        var avTime = data.find(function(obj){
+          return date === +moment(obj.date, 'ddd MMM DD YYYY')
+        })
 
-      this.setState({
-        dayAvailabilities:avTime.slots,
+        this.setState({
+          dayAvailabilities:avTime.slots,
+          loading: false
+        })
       })
-    })
+    }
   }
   _handleClick = (clicked,startTime) => {
 
@@ -66,12 +76,10 @@ class Availability extends React.Component {
     }
   }
 
-
-
   render() {
     let {date}=this.state;
     if(this.state.dayAvailabilities.length > 0){
-      
+
 
 
       return (
@@ -87,7 +95,10 @@ class Availability extends React.Component {
                   whenCancel={this._handleCancel}
                 />
               </div> : null}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 28fbd6a3fb6ec1a6529e22e1d8254a59321d747f
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot => {
                 var tempBool = false;
@@ -130,13 +141,16 @@ class Availability extends React.Component {
             </ul>
           </div>
         );
-    }else{
+    }else if (this.state.loading){
       return (
-        <div>
+        <div className="loadingSpinner">
           <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
           <span className="sr-only">Loading...</span>
         </div>
       )
+    }else{
+      this.props.router.push('/home')
+      return <div></div>
     }
   }
 }

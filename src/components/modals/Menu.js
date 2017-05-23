@@ -8,7 +8,10 @@ class Menu extends Component {
 
   _handleLogoutButton= () => {
     this.props.auth.logout();
-
+    Promise.resolve(this.props.router('/home'))
+    .then(()=>{
+      this.props.auth.login()
+    })
   }
 
   handleClickOutside = () => {

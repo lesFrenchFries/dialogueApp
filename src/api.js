@@ -1,5 +1,5 @@
-import {API_HOST} from './config'
-import superagent from 'superagent'
+import {API_HOST} from './config';
+import superagent from 'superagent';
 
 class Api {
 

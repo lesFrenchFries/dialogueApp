@@ -25,6 +25,11 @@
   color: #26bdf0;
 }
 
+.thisWeek {
+  color: #dfdfdf !important;
+  cursor: default !important;
+}
+
 .booking-header {
   border-top: 1px solid #dfdfdf;
   border-bottom: 1px solid #dfdfdf;

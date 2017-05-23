@@ -6,7 +6,10 @@ export default class AuthService {
     // Configure Auth0
     this.lock = new Auth0Lock(clientId, domain, {
         allowedConnections: ['Username-Password-Authentication'],
-        responseType: 'token'
+        auth: {
+          responseType: 'token',
+          redirectUrl: window.location.origin + '/callback'
+        }
       }
     )
     // Add callback for lock `authenticated` event

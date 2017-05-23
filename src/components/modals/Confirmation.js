@@ -26,13 +26,11 @@ class Confirmation extends React.Component {
 
     render() {
       return (
-
         <div className="confirmation_form">
           <h3 className="confirmation_title">Confirmation</h3>
           <p>Please confirm your appointment with a {this.props.spec} on {moment(this.props.date).format("dddd LL")} at {this.props.start}</p>
           <button type="button" className="confirmation_button" onClick={this._handleConfirmation}>Confirm</button>
           <p className="confirmation_cancel" onClick={this._handleCancelButton}>Cancel</p>
-
         </div>
       );
     }
