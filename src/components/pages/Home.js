@@ -15,7 +15,6 @@ class Home extends React.Component {
     this._fetchPatientBooking();
   }
 
-
   _fetchPatientBooking = () => {
     if(this.props.route.auth.loggedIn()){
       const token = this.props.route.auth.getToken();

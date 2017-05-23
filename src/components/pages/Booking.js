@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash'
 import api from '../../api';
 import './Booking.css';
 import DayButton from '../elements/DayButton';
@@ -16,7 +15,7 @@ class Booking extends React.Component {
   }
 
   componentWillMount(){
-    this._fetchAvailabilities(this.props);
+    this._fetchAvailabilities();
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -26,16 +25,16 @@ class Booking extends React.Component {
     }
   }
 
-  _fetchAvailabilities = (props) => {
+  _fetchAvailabilities = () => {
     if(this.props.route.auth.loggedIn()){
-      const token = props.route.auth.getToken();
-      api.reqAvailabilities(props.location.query.position, moment().day("sunday").week(this.state.weekNum).format("YYYY-MM-DD"), token)
+      const token = this.props.route.auth.getToken();
+      api.reqAvailabilities(this.props.location.query.position, moment().day("sunday").week(this.state.weekNum).format("YYYY-MM-DD"), token)
       .then(data=>{
         this.setState({
           weekAvailabilities: data,
           loading: false
         });
-      })
+      }).catch(console.error)
     }
   }
 

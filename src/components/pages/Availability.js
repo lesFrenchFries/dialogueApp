@@ -6,6 +6,7 @@ import './Availability.css';
 
 var moment = require('moment');
 
+
 class Availability extends React.Component {
   constructor(props) {
     super(props);
@@ -25,6 +26,12 @@ class Availability extends React.Component {
   componentDidUpdate(prevState){
     if(prevState.display !== this.state.display) {
       this._scrollOrNot()
+    }
+
+    if(prevState.loading !== this.state.loading){
+      if(this.state.dayAvailabilities.length===0 && !this.state.loading){
+        this.props.router.push('/home')
+      }
     }
   }
 
@@ -46,8 +53,8 @@ class Availability extends React.Component {
       })
     }
   }
-  _handleClick = (clicked,startTime) => {
 
+  _handleClick = (clicked,startTime) => {
     this.setState({
       display: clicked,
       bookingStart: startTime,
@@ -71,6 +78,7 @@ class Availability extends React.Component {
 
   render() {
     let {date}=this.state;
+
     let time = this.state.dayAvailabilities;
     let beforeNoon = [];
     let afterNoon = [];
@@ -131,16 +139,13 @@ class Availability extends React.Component {
             </ul>
           </div>
         );
-    }else if (this.state.loading){
+    }else{
       return (
         <div className="loadingSpinner">
           <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
           <span className="sr-only">Loading...</span>
         </div>
       )
-    }else{
-      this.props.router.push('/home')
-      return <div></div>
     }
   }
 }
