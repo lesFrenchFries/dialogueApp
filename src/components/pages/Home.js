@@ -18,7 +18,6 @@ class Home extends React.Component {
   _fetchPatientBooking = () => {
     if(this.props.route.auth.loggedIn()){
       const token = this.props.route.auth.getToken();
-
       api.reqPatientBooking(token)
       .then(data => {
         this.setState({
