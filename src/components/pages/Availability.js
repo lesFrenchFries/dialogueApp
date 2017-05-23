@@ -3,6 +3,7 @@ import api from '../../api';
 import DisplayAvailabilities from '../elements/DisplayAvailabilities';
 import Confirmation from '../modals/Confirmation';
 import './Availability.css';
+
 var moment = require('moment');
 
 class Availability extends React.Component {
@@ -13,6 +14,7 @@ class Availability extends React.Component {
       date: this.props.params.date,
       display: false,
       bookingStart: "",
+      loading: true,
       loading: true,
     }
   }

@@ -29,11 +29,13 @@
   .availability-title > spam {
     font-size: 20px;
   }
+
   .noon{
     display: flex;
     justify-content: space-around;
     align-items: center;
   }
+
   .separator {
     border-top: 1px solid lightgray;
     height: 1px;
