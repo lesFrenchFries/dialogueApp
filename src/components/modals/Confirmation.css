@@ -1,5 +1,5 @@
 .confirmation_form {
-  min-height: 200px;
+  min-height: 245px;
   width: 66%;
   text-align: center;
   display: flex;
@@ -49,6 +49,6 @@
 
 .confirmation_cancel:hover {
   color: #146C90;
-  height: 14px;
+  height: 15px;
   border-bottom: thin solid #146C90;
 }
