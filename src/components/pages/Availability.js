@@ -91,7 +91,6 @@ class Availability extends React.Component {
           afterNoon.push(time[i])
         }
       }
-      console.log(afterNoon.lenght, beforeNoon.length);
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
