@@ -91,7 +91,6 @@ class Availability extends React.Component {
           afterNoon.push(time[i])
         }
       }
-
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
@@ -118,11 +117,14 @@ class Availability extends React.Component {
                 })
               }
             </ul>
-            <div className="noon">
-              <div className="separator"></div>
-              <p>NOON</p>
-              <div className="separator"></div>
-            </div>
+            {afterNoon.length > 0 && beforeNoon.length > 0 ?
+                  <div className="noon">
+                    <div className="separator"></div>
+                    <p>NOON</p>
+                    <div className="separator"></div>
+                  </div> : null
+            }
+
             <ul className="timeSlotList">
               {afterNoon.map(timeSlot => {
                   return(
