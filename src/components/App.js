@@ -20,6 +20,10 @@ class App extends Component {
       this.setState({userInfo:this.props.route.auth.getUserInfo()})
     }
 
+  _handleRedirect = (path) => {
+    this.props.router.push(path)
+  }
+
   componentWillMount() {
     this._getUserInfo();
   }
@@ -36,7 +40,7 @@ class App extends Component {
             <img className="App-avatar" src={userInfo.picture} alt={userInfo.nickname + ' avatar'}
             onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}/>
           </div>
-          <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu} nickname={userInfo.nickname}/>
+          <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu} nickname={userInfo.nickname} router={this._handleRedirect}/>
           {this.props.children}
         </div>
       )

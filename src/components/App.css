@@ -47,3 +47,11 @@
   color: #26BDF0;
   font-size: 45px !important;
 }
+
+.loadingSpinner {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

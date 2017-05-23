@@ -21,13 +21,25 @@ const requireAuth = (nextState, replace, cb) => {
 
   setTimeout(() => {
     if (!auth.loggedIn()) {
+      localStorage.redirectUrl = window.location.pathname + window.location.search;
       auth.login();
     }else{
       cb();
     }
   }, 500);
 
-}
+};
+
+const redirectAfterLogin = (nextState, replace) => {
+  if (localStorage.redirectUrl) {
+    const url = localStorage.redirectUrl;
+    delete localStorage.redirectUrl;
+    replace(url);
+  }
+  else {
+    replace('/home');
+  }
+};
 
 const routes = (
 <Router history={browserHistory}>
@@ -36,7 +48,7 @@ const routes = (
     <Route path="/bookings/:date" auth={auth} component={Availability}/>
     <Route path="/booking/:id" auth={auth} component={Details}/>
     <Route path="/home" auth={auth} component={Home}/>
-
+    <Route path="/callback" onEnter={redirectAfterLogin}/>
   </Route>
 </Router>
 );

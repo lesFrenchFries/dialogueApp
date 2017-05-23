@@ -1,0 +1,12 @@
+.home_title {
+  padding: 20px 10px 15px 10px;
+  border-bottom: 1px solid #dfdfdf;
+  margin-top:0;
+  font-size: 20px;
+}
+
+.all_bookings {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 300px;
+}

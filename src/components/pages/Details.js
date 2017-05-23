@@ -16,14 +16,16 @@ class Details extends React.Component {
   }
 
   _fetchBookingInfo = () => {
-    const token = this.props.route.auth.getToken();
-    api.reqBookingInfo(this.props.params.id, token)
-    .then(data => {
-      this.setState({
-        info: data,
+    if(this.props.route.auth.loggedIn()){
+      const token = this.props.route.auth.getToken();
+      api.reqBookingInfo(this.props.params.id, token)
+      .then(data => {
+        this.setState({
+          info: data,
+        })
       })
-    })
-    }
+    }  
+  }
 
 
   render() {
@@ -37,12 +39,16 @@ class Details extends React.Component {
           <h2>{moment(info.time[0]).format("dddd, MMMM Do")} at {info.time[1]}</h2>
           <p>
             You will be meeting {info.firstName} {info.lastName} ({info.specialization})
-
           </p>
         </div>
       );
     }else{
-      return (<div>Loading...</div>)
+      return (
+        <div className="loadingSpinner">
+          <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
+          <span className="sr-only">Loading...</span>
+        </div>
+      )
     }
   }
 
