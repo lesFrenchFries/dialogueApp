@@ -14,17 +14,19 @@
 .confirmation_button {
   margin: auto;
   cursor: pointer;
-  border:none;
-  background-color: #26BDF0;
+  border:thin solid #26BDF0;
+  background-color: #fff;
   border-radius: 2.5px;
   box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.45);
   height: 2.5em;
   width: 10em;
-  color: #fff;
+  color: #26BDF0;
   font-size: 14px;
 }
 
 .confirmation_button:hover {
+  color: #fff;
+  background-color: #26BDF0;
   box-shadow: 0px 2px 2px 1px rgba(0,0,0,0.30);
 }
 

@@ -35,9 +35,7 @@ class DisplayBookings extends React.Component {
         </div>
       )
     }
-
   }
-
 }
 
 export default DisplayBookings;

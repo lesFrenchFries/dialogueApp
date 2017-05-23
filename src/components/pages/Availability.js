@@ -6,6 +6,7 @@ import './Availability.css';
 
 var moment = require('moment');
 
+
 class Availability extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,6 @@ class Availability extends React.Component {
       date: this.props.params.date,
       display: false,
       bookingStart: "",
-      loading: true,
       loading: true,
     }
   }
@@ -26,6 +26,12 @@ class Availability extends React.Component {
   componentDidUpdate(prevState){
     if(prevState.display !== this.state.display) {
       this._scrollOrNot()
+    }
+
+    if(prevState.loading !== this.state.loading){
+      if(this.state.dayAvailabilities.length===0 && !this.state.loading){
+        this.props.router.push('/home')
+      }
     }
   }
 
@@ -47,8 +53,8 @@ class Availability extends React.Component {
       })
     }
   }
-  _handleClick = (clicked,startTime) => {
 
+  _handleClick = (clicked,startTime) => {
     this.setState({
       display: clicked,
       bookingStart: startTime,
@@ -72,10 +78,18 @@ class Availability extends React.Component {
 
   render() {
     let {date}=this.state;
+<<<<<<< HEAD
     let time = this.state.dayAvailabilities;
     let beforeNoon = [];
     let afterNoon = [];
 
+=======
+
+    let time = this.state.dayAvailabilities;
+    let beforeNoon = [];
+    let afterNoon = [];
+
+>>>>>>> c62c80df0d1e35818df2390d082237c4e8d81978
     if(this.state.dayAvailabilities.length > 0){
       for (var i = 0; i < time.length; i++) {
         if (time[i].start <= "12:00") {
@@ -101,6 +115,7 @@ class Availability extends React.Component {
               </div> : null}
             <ul className="timeSlotList">
               {beforeNoon.map(timeSlot => {
+<<<<<<< HEAD
                   return(
                     <DisplayAvailabilities whenSubmit={this._handleClick}
                       key={timeSlot.start}
@@ -119,6 +134,8 @@ class Availability extends React.Component {
             </div>
             <ul className="timeSlotList">
               {afterNoon.map(timeSlot => {
+=======
+>>>>>>> c62c80df0d1e35818df2390d082237c4e8d81978
                   return(
                     <DisplayAvailabilities whenSubmit={this._handleClick}
                       key={timeSlot.start}
@@ -128,20 +145,38 @@ class Availability extends React.Component {
                     />
                   )
                 })
+<<<<<<< HEAD
+=======
+              }
+            </ul>
+            <div className="noon">
+              <div className="separator"></div>
+              <p>NOON</p>
+              <div className="separator"></div>
+            </div>
+            <ul className="timeSlotList">
+              {afterNoon.map(timeSlot => {
+                  return(
+                    <DisplayAvailabilities whenSubmit={this._handleClick}
+                      key={timeSlot.start}
+                      data={timeSlot}
+                      date={this.state.date}
+                      auth={this.props.route.auth}
+                    />
+                  )
+                })
+>>>>>>> c62c80df0d1e35818df2390d082237c4e8d81978
               }
             </ul>
           </div>
         );
-    }else if (this.state.loading){
+    }else{
       return (
         <div className="loadingSpinner">
           <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
           <span className="sr-only">Loading...</span>
         </div>
       )
-    }else{
-      this.props.router.push('/home')
-      return <div></div>
     }
   }
 }
