@@ -107,7 +107,6 @@ class Availability extends React.Component {
               </div> : null}
             <ul className="timeSlotList">
               {beforeNoon.map(timeSlot => {
-<<<<<<< HEAD
                   return(
                     <DisplayAvailabilities whenSubmit={this._handleClick}
                       key={timeSlot.start}
@@ -126,8 +125,6 @@ class Availability extends React.Component {
             </div>
             <ul className="timeSlotList">
               {afterNoon.map(timeSlot => {
-=======
->>>>>>> c62c80df0d1e35818df2390d082237c4e8d81978
                   return(
                     <DisplayAvailabilities whenSubmit={this._handleClick}
                       key={timeSlot.start}
@@ -137,27 +134,6 @@ class Availability extends React.Component {
                     />
                   )
                 })
-<<<<<<< HEAD
-=======
-              }
-            </ul>
-            <div className="noon">
-              <div className="separator"></div>
-              <p>NOON</p>
-              <div className="separator"></div>
-            </div>
-            <ul className="timeSlotList">
-              {afterNoon.map(timeSlot => {
-                  return(
-                    <DisplayAvailabilities whenSubmit={this._handleClick}
-                      key={timeSlot.start}
-                      data={timeSlot}
-                      date={this.state.date}
-                      auth={this.props.route.auth}
-                    />
-                  )
-                })
->>>>>>> c62c80df0d1e35818df2390d082237c4e8d81978
               }
             </ul>
           </div>
