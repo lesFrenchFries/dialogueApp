@@ -27,8 +27,9 @@ class Menu extends Component {
         <div className={`menu ${show?"show":""}`}>
             {loggedIn ?
               <div className="menu__item" onClick={closeMenu}>
+                <p className="menu__user">{this.props.nickname}</p>
                 <Link to="/home">Home</Link>
-                <button type="button" onClick={this._handleLogoutButton}>Logout</button>
+                <button onClick={this._handleLogoutButton}>Logout</button>
               </div>
             :null}
         </div>

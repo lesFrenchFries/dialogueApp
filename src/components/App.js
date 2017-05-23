@@ -36,20 +36,11 @@ class App extends Component {
       return (
         <div>
           <div className="App-navbar">
-            <div className="App-item">
-              <img className="App-avatar" src={userInfo.picture} alt={userInfo.nickname + ' avatar'}/>
-              <p className="App-user">{userInfo.nickname}</p>
-              {isMenuOpen
-                ? <i className="fa fa-caret-up" aria-hidden="true"
-                  onClick={this.closeMenu}
-                  />
-
-                : <i className="fa fa-caret-down"
-                  onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}
-                  />}
-            </div>
+            <img className="App-logo" src="/logo-white.png" alt="logo dialogue"/>
+            <img className="App-avatar" src={userInfo.picture} alt={userInfo.nickname + ' avatar'}
+            onClick={()=>this.setState({ isMenuOpen: !isMenuOpen })}/>
           </div>
-          <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu} router={this._handleRedirect}/>
+          <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu} nickname={userInfo.nickname} router={this._handleRedirect}/>
           {this.props.children}
         </div>
       )
