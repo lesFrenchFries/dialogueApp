@@ -2,13 +2,7 @@ import React from 'react';
 import api from '../../api';
 import DisplayAvailabilities from '../elements/DisplayAvailabilities';
 import Confirmation from '../modals/Confirmation';
-<<<<<<< HEAD
 import './Availability.css';
-var moment = require('moment');
-=======
-import './Availability.css'
->>>>>>> 28fbd6a3fb6ec1a6529e22e1d8254a59321d747f
-
 var moment = require('moment');
 
 class Availability extends React.Component {
@@ -95,10 +89,6 @@ class Availability extends React.Component {
                   whenCancel={this._handleCancel}
                 />
               </div> : null}
-<<<<<<< HEAD
-
-=======
->>>>>>> 28fbd6a3fb6ec1a6529e22e1d8254a59321d747f
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot => {
                 var tempBool = false;
