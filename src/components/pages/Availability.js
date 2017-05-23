@@ -15,7 +15,6 @@ class Availability extends React.Component {
       display: false,
       bookingStart: "",
       loading: true,
-      loading: true,
     }
   }
 
