@@ -84,7 +84,7 @@ class Availability extends React.Component {
 
     if(this.state.dayAvailabilities.length > 0){
       for (var i = 0; i < time.length; i++) {
-        if (time[i].start <= "12:00") {
+        if (time[i].start < "12:00") {
           beforeNoon.push(time[i])
         }
         else {
