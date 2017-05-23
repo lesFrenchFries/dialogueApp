@@ -16,14 +16,16 @@ class Details extends React.Component {
   }
 
   _fetchBookingInfo = () => {
-    const token = this.props.route.auth.getToken();
-    api.reqBookingInfo(this.props.params.id, token)
-    .then(data => {
-      this.setState({
-        info: data,
+    if(this.props.route.auth.loggedIn()){
+      const token = this.props.route.auth.getToken();
+      api.reqBookingInfo(this.props.params.id, token)
+      .then(data => {
+        this.setState({
+          info: data,
+        })
       })
-    })
-    }
+    }  
+  }
 
 
   render() {
