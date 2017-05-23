@@ -3,12 +3,9 @@ import api from '../../api';
 import DisplayAvailabilities from '../elements/DisplayAvailabilities';
 import Confirmation from '../modals/Confirmation';
 import './Availability.css'
-<<<<<<< HEAD
-var moment = require('moment');
-=======
->>>>>>> 28fbd6a3fb6ec1a6529e22e1d8254a59321d747f
 
 var moment = require('moment');
+
 
 class Availability extends React.Component {
   constructor(props) {
@@ -34,7 +31,7 @@ class Availability extends React.Component {
   }
 
   _fetchAvailabilities = () => {
-    if(this.props.route.auth.loggedIn()){
+    // if(this.props.route.auth.loggedIn()){
       const token = this.props.route.auth.getToken();
 
       api.reqAvailabilities(this.props.location.query.spec, this.props.params.date, token)
@@ -50,10 +47,10 @@ class Availability extends React.Component {
           loading: false
         })
       })
-    }
+    // }
   }
-  _handleClick = (clicked,startTime) => {
 
+  _handleClick = (clicked,startTime) => {
     this.setState({
       display: clicked,
       bookingStart: startTime,
@@ -79,8 +76,6 @@ class Availability extends React.Component {
     let {date}=this.state;
     if(this.state.dayAvailabilities.length > 0){
 
-
-
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
@@ -101,10 +96,10 @@ class Availability extends React.Component {
                   tempBool = true;
                 };
                 if(timeSlot.start < "12:00") {
-                  this.state.wasAmBefore= true;
+                  this.setState({wasAmBefore: true})
                 }
                 else {
-                  this.state.wasAmBefore= false;
+                  this.setState({wasAmBefore: false})
                 };
                 if (tempBool) {
                   return(
@@ -136,17 +131,18 @@ class Availability extends React.Component {
             </ul>
           </div>
         );
-    }else if (this.state.loading){
+    }else{
       return (
         <div className="loadingSpinner">
           <i className="fa fa-spinner fa-pulse fa-3x fa-fw blue"></i>
           <span className="sr-only">Loading...</span>
         </div>
       )
-    }else{
-      this.props.router.push('/home')
-      return <div></div>
     }
+    // else{
+    //   this.props.router.push('/home')
+    //   return <div></div>
+    // }
   }
 }
 
