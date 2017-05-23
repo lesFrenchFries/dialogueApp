@@ -13,10 +13,7 @@ class Confirmation extends React.Component {
 
   _handleConfirmation = () => {
     const token = this.props.auth.getToken();
-<<<<<<< HEAD
-=======
 
->>>>>>> 5f4746c9cfb6b47a4c3e42570113bfb56bb222b5
     const mail = this.props.auth.getUserInfo();
     api.sendBooking(this.props.date, this.props.start, token, this.props.spec, mail.email)
     .then(res => {
@@ -30,13 +27,11 @@ class Confirmation extends React.Component {
 
     render() {
       return (
-
         <div className="confirmation_form">
           <h3 className="confirmation_title">Confirmation</h3>
           <p>Please confirm your appointment with a {this.props.spec} on {moment(this.props.date).format("dddd LL")} at {this.props.start}</p>
           <button type="button" className="confirmation_button" onClick={this._handleConfirmation}>Confirm</button>
           <p className="confirmation_cancel" onClick={this._handleCancelButton}>Cancel</p>
-
         </div>
       );
     }

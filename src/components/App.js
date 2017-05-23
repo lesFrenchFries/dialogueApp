@@ -13,12 +13,16 @@ class App extends Component {
   }
 
   closeMenu = () => {
-    this.setState({ isMenuOpen: false })      
+    this.setState({ isMenuOpen: false })
   }
 
   _getUserInfo = () => {
       this.setState({userInfo:this.props.route.auth.getUserInfo()})
     }
+
+  _handleRedirect = (path) => {
+    this.props.router.push(path)
+  }
 
   componentWillMount() {
     this._getUserInfo();
@@ -45,7 +49,7 @@ class App extends Component {
                   />}
             </div>
           </div>
-          <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu}/>
+          <Menu show={isMenuOpen} auth={auth} closeMenu={this.closeMenu} router={this._handleRedirect}/>
           {this.props.children}
         </div>
       )
