@@ -78,18 +78,10 @@ class Availability extends React.Component {
 
   render() {
     let {date}=this.state;
-<<<<<<< HEAD
     let time = this.state.dayAvailabilities;
     let beforeNoon = [];
     let afterNoon = [];
 
-=======
-
-    let time = this.state.dayAvailabilities;
-    let beforeNoon = [];
-    let afterNoon = [];
-
->>>>>>> c62c80df0d1e35818df2390d082237c4e8d81978
     if(this.state.dayAvailabilities.length > 0){
       for (var i = 0; i < time.length; i++) {
         if (time[i].start <= "12:00") {
