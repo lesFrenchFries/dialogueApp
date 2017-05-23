@@ -24,7 +24,7 @@ class Details extends React.Component {
           info: data,
         })
       })
-    }  
+    }
   }
 
 
@@ -34,11 +34,11 @@ class Details extends React.Component {
     if(Object.keys(info).length>0){
       info.time = info.time.split("T").join(" ").split(":", 2).join(":").split(" ");
       return (
-        <div className="booking_details">
-          <h3 className="details_title">Your appointment is confirm:</h3>
+        <div className="booking_details booking_details_md">
+          <h3 className="details_title">Your appointment is confirmed:</h3>
           <h2>{moment(info.time[0]).format("dddd, MMMM Do")} at {info.time[1]}</h2>
           <p>
-            You will be meeting {info.firstName} {info.lastName} ({info.specialization})
+            You will be meeting with {info.firstName} {info.lastName} ({info.specialization})
           </p>
         </div>
       );
