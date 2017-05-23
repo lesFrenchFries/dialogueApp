@@ -5,34 +5,30 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   background-color: #26bdf0;
-  background-image: url(../../public/dialogue-squarelogo.png);
+  /*background-image: url(../../public/logo-white.png);
   background-repeat: no-repeat;
-  background-size: 65px 65px;
+  background-size: 179px 40px;*/
   color: white;
   z-index: 10;
   box-shadow: 0px 3px 5px -3px grey;
 }
 
-.App-item {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.App-item p, img{
+.App-navbar p, img{
   margin: 10px;
-}
-
-.App-item i {
-  cursor: pointer;
 }
 
 .App-avatar {
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  cursor: pointer;
+}
+.App-logo {
+  height: 40px;
+  with:174px;
 }
 
 .popUpForm {

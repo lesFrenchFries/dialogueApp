@@ -3,7 +3,8 @@
   margin: 0;
   display: flex;
   text-align: -webkit-center;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .timeSlot {
@@ -14,10 +15,9 @@
   margin: 15px;
   text-align: center;
   border: 1px solid #26bdf0;
-  border-radius: 5px;
   cursor:pointer;
   height: 55px;
-  max-width: 650px;
+  min-width: 300px;
 }
 
 .timeSlot:hover {
@@ -29,14 +29,4 @@
 .timeSlot > p, hr {
   margin:5px auto;
   color: #0d4a68;
-}
-
-.availability-title {
-  font-size: 20px;
-  margin: 0;
-  padding: 20px 10px 15px 10px;
-  border-bottom: 1px solid #dfdfdf;
-}
-.availability-title > spam {
-  font-size: 15px;
 }

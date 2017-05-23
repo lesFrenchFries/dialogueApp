@@ -1,1 +1,43 @@
+.availability-title {
+  font-size: 20px;
+  margin: 0;
+  padding: 20px 10px 15px 15px;
+  border-bottom: 1px solid #dfdfdf;
+}
+.availability-title > spam {
+  font-size: 15px;
+}
 
+@media only screen and (min-width: 641px) {
+  .availability-title {
+    font-size: 30px;
+    margin: 0;
+    padding: 20px 10px 15px 40px;
+    border-bottom: 1px solid #dfdfdf;
+  }
+  .availability-title > spam {
+    font-size: 20px;
+  }
+
+  .separator {
+    width: 1000px;
+  }
+  .timeSlot {
+    min-width: 300px;
+  }
+}
+
+.noon {
+  margin-top: 500px;
+}
+.noon::before {
+  content: "NOON";
+  position: absolute;
+  top: -50px;
+  border-top: 1px solid red;
+  display: block;
+  width: 100%;
+  height: 45px;
+  margin: 400px;
+  background-color: orange;
+}
