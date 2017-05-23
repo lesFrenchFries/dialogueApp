@@ -86,11 +86,6 @@ class Availability extends React.Component {
                   whenCancel={this._handleCancel}
                 />
               </div> : null}
-<<<<<<< HEAD
-
-=======
-
->>>>>>> 27c0ce2153ad9ec9041569c1b32edd699fe532bb
             <ul className="timeSlotList">
               {this.state.dayAvailabilities.map(timeSlot =>
                   <DisplayAvailabilities whenSubmit={this._handleClick}
