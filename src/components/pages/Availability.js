@@ -28,15 +28,20 @@ class Availability extends React.Component {
     if(prevState.display !== this.state.display) {
       this._scrollOrNot()
     }
+
+    if(prevState.loading !== this.state.loading){
+      if(this.state.dayAvailabilities.length===0 && !this.state.loading){
+        this.props.router.push('/home')
+      }
+    }
   }
 
   _fetchAvailabilities = () => {
-    // if(this.props.route.auth.loggedIn()){
+    if(this.props.route.auth.loggedIn()){
       const token = this.props.route.auth.getToken();
 
       api.reqAvailabilities(this.props.location.query.spec, this.props.params.date, token)
       .then(data =>{
-        console.log(data);
         var date = +moment(this.state.date);
         var avTime = data.find(function(obj){
           return date === +moment(obj.date, 'ddd MMM DD YYYY')
@@ -47,7 +52,7 @@ class Availability extends React.Component {
           loading: false
         })
       })
-    // }
+    }
   }
 
   _handleClick = (clicked,startTime) => {
@@ -74,8 +79,8 @@ class Availability extends React.Component {
 
   render() {
     let {date}=this.state;
+    console.log(this.state.dayAvailabilities.length)
     if(this.state.dayAvailabilities.length > 0){
-
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
@@ -96,10 +101,10 @@ class Availability extends React.Component {
                   tempBool = true;
                 };
                 if(timeSlot.start < "12:00") {
-                  this.setState({wasAmBefore: true})
+                  this.state={wasAmBefore: true}
                 }
                 else {
-                  this.setState({wasAmBefore: false})
+                  this.state={wasAmBefore: false}
                 };
                 if (tempBool) {
                   return(
@@ -139,10 +144,6 @@ class Availability extends React.Component {
         </div>
       )
     }
-    // else{
-    //   this.props.router.push('/home')
-    //   return <div></div>
-    // }
   }
 }
 

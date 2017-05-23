@@ -16,20 +16,21 @@ class DayButton extends React.Component {
     let now = moment().format("YYYY-MM-DD")
 
     data.forEach(obj=>{
-      if(obj.slots.length > 0 && moment(now).isSameOrBefore(obj.date)){
+      let thisDay = moment(obj.date, "ddd MMM DD YYYY");
+      if(obj.slots.length > 0 && moment(now).isSameOrBefore(thisDay)){
         days.push(
-          <Link to={`/bookings/${moment(obj.date).format("YYYY-MM-DD")}?spec=${specialists}`} key={obj.date}>
+          <Link to={`/bookings/${moment(thisDay).format("YYYY-MM-DD")}?spec=${specialists}`} key={obj.date}>
             <li className="dayName dayName-md">
-              {moment(obj.date).format("ddd")}<hr/>
-              {moment(obj.date).format("DD")}
+              {moment(thisDay).format("ddd")}<hr/>
+              {moment(thisDay).format("DD")}
             </li>
           </Link>
         )
       }else{
         days.push(
           <li className="dayName dayName-md noAv noAv-md" key={obj.date}>
-            <span>{moment(obj.date).format("ddd")}<hr/>
-            {moment(obj.date).format("DD")}</span>
+            <span>{moment(thisDay).format("ddd")}<hr/>
+            {moment(thisDay).format("DD")}</span>
           </li>
         )
       }
