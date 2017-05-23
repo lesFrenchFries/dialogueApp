@@ -3,9 +3,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 66%;
+  text-align: center;
   margin: 30px auto;
   box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.35);
   border-radius: 2.5px;
   background-color: #E1F7FA;
+  width:80%;
+  font-size: 0.9em;
+  width: 90%;
+  margin-top: 60px;
+  padding: 25px 0;
+}
+
+@media only screen and (min-width: 641px) {
+  .booking_details_md {
+    width: 66%;
+  }
 }
