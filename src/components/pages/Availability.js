@@ -2,7 +2,7 @@ import React from 'react';
 import api from '../../api';
 import DisplayAvailabilities from '../elements/DisplayAvailabilities';
 import Confirmation from '../modals/Confirmation';
-import './Availability.css'
+import './Availability.css';
 
 var moment = require('moment');
 
@@ -15,7 +15,6 @@ class Availability extends React.Component {
       date: this.props.params.date,
       display: false,
       bookingStart: "",
-      wasAmBefore: false,
       loading: true,
     }
   }
@@ -79,8 +78,20 @@ class Availability extends React.Component {
 
   render() {
     let {date}=this.state;
-    console.log(this.state.dayAvailabilities.length)
+    let time = this.state.dayAvailabilities;
+    let beforeNoon = [];
+    let afterNoon = [];
+
     if(this.state.dayAvailabilities.length > 0){
+      for (var i = 0; i < time.length; i++) {
+        if (time[i].start <= "12:00") {
+          beforeNoon.push(time[i])
+        }
+        else {
+          afterNoon.push(time[i])
+        }
+      }
+
       return (
           <div className="availability">
             <h3 className="availability-title">Please choose an availability for {this.props.location.query.spec}<br /><spam>for {moment(date).format("dddd MMMM Do")}</spam></h3>
@@ -95,43 +106,34 @@ class Availability extends React.Component {
                 />
               </div> : null}
             <ul className="timeSlotList">
-              {this.state.dayAvailabilities.map(timeSlot => {
-                var tempBool = false;
-                if(timeSlot.start >= "12:00" && this.state.wasAmBefore){
-                  tempBool = true;
-                };
-                if(timeSlot.start < "12:00") {
-                  this.state={wasAmBefore: true}
-                }
-                else {
-                  this.state={wasAmBefore: false}
-                };
-                if (tempBool) {
+              {beforeNoon.map(timeSlot => {
                   return(
-                  <div>
-                    <div className="separator">
-                      <hr />
-                      <p>Noon</p>
-                      <hr />
-                    </div>
                     <DisplayAvailabilities whenSubmit={this._handleClick}
                       key={timeSlot.start}
                       data={timeSlot}
                       date={this.state.date}
                       auth={this.props.route.auth}
                     />
-                  </div>)
-                }
-                else {
-                  return (
-                  <DisplayAvailabilities whenSubmit={this._handleClick}
-                    key={timeSlot.start}
-                    data={timeSlot}
-                    date={this.state.date}
-                    auth={this.props.route.auth}
-                  />)
-                }
-              })
+                  )
+                })
+              }
+            </ul>
+            <div className="noon">
+              <div className="separator"></div>
+              <p>NOON</p>
+              <div className="separator"></div>
+            </div>
+            <ul className="timeSlotList">
+              {afterNoon.map(timeSlot => {
+                  return(
+                    <DisplayAvailabilities whenSubmit={this._handleClick}
+                      key={timeSlot.start}
+                      data={timeSlot}
+                      date={this.state.date}
+                      auth={this.props.route.auth}
+                    />
+                  )
+                })
               }
             </ul>
           </div>
