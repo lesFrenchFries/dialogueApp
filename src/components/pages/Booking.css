@@ -18,12 +18,21 @@
 }
 
 .week > i {
-  position: relative;
-  width: 5%;
   font-size: 35px;
   cursor: pointer;
   color: #26bdf0;
 }
+
+.fa-chevron-right {
+  margin-right: 20px;
+  padding-left: 10px;
+}
+
+.fa-chevron-left {
+  margin-left: 20px;
+  padding-right: 10px;
+}
+
 
 .thisWeek {
   color: #dfdfdf !important;
